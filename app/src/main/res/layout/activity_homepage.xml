@@ -7,6 +7,31 @@
     tools:context=".Homepage"
     android:background="@color/black">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:id="@+id/btn_ns"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Now Showing"
+        android:layout_marginTop="350dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"/>
+
+    <Button
+        android:id="@+id/btn_cs"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Coming Soon"
+        android:layout_marginTop="420dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"/>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btm_nav_bar"
         android:layout_width="match_parent"

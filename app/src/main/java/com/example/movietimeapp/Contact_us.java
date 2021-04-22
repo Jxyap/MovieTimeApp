@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,6 +16,8 @@ public class Contact_us extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Contact us");
 
         BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
         btm_nav.setSelectedItemId(R.id.navigation_contact_us);

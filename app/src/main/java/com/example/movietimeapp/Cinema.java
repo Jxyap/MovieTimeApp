@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,6 +17,9 @@ public class Cinema extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema);
         setTitle("Cinema");
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Cinema");
 
         BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
         btm_nav.setSelectedItemId(R.id.navigation_cinema);

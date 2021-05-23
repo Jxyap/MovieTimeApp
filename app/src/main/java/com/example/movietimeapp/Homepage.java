@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 public class Homepage extends AppCompatActivity {
 
     private Button ns_Btn, cs_btn;
+    private TextView mName;
     SliderView sliderView;
     ArrayList<ImageSliderModel> list;
 
@@ -38,6 +40,7 @@ public class Homepage extends AppCompatActivity {
         ns_Btn = findViewById(R.id.btn_ns);
         cs_btn = findViewById(R.id.btn_cs);
         sliderView = findViewById(R.id.imageSlider);
+        mName = findViewById(R.id.slider_name);
 
         loadSlide();
 
@@ -71,15 +74,16 @@ public class Homepage extends AppCompatActivity {
         list = new ArrayList<>();
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
-        dbRef.child("imageUrl").addValueEventListener(new ValueEventListener() {
+        dbRef.child("imgUrl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    String url = ds.getValue(String.class);
-                    list.add(new ImageSliderModel(url));
+                    ImageSliderModel imageSliderModel = ds.getValue(ImageSliderModel.class);
+                    list.add(imageSliderModel);
                 }
                 sliderView.setSliderAdapter(new imageAdapter(Homepage.this, list));
                 sliderView.startAutoCycle();
+
             }
 
             @Override

@@ -1,20 +1,24 @@
 package com.example.movietimeapp;
 
 public class ImageSliderModel {
-    String imgUrl;
+    String url, mName;
 
     public ImageSliderModel() {
     }
 
-    public ImageSliderModel(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
+    public String getUrl() {
+        return url;
     }
 
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+        this.url = url;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
     }
 }

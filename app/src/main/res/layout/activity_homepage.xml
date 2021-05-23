@@ -25,6 +25,13 @@
         app:sliderScrollTimeInSec="3"
         app:sliderStartAutoCycle="true" />
 
+    <TextView
+        android:id="@+id/slider_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        />
+
     <Button
         android:id="@+id/btn_ns"
         android:layout_width="300dp"

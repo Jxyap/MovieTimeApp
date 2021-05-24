@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTimeApp">
-        <activity android:name=".edit_profile"></activity>
+        <activity android:name=".CSmovie"></activity>
+        <activity android:name=".ComingSoon" />
+        <activity android:name=".NStime" />
+        <activity android:name=".NSmovie" />
+        <activity android:name=".NowShowing" />
+        <activity android:name=".edit_profile" />
         <activity android:name=".registration" />
         <activity android:name=".login" />
         <activity

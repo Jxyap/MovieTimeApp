@@ -24,4 +24,16 @@ public class CinemaModel {
     public String getInfo() {
         return info;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 }

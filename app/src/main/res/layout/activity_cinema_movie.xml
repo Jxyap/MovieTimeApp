@@ -37,10 +37,12 @@
             android:textSize="20sp" />
     </TableRow>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_list"
         android:layout_width="375dp"
         android:layout_height="520dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        tools:listitem="@layout/c_movie_layout"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>

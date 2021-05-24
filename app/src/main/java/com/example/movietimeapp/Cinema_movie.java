@@ -26,5 +26,7 @@ public class Cinema_movie extends AppCompatActivity {
         CinemaMovieAdapter cinemaMovieAdapter = new CinemaMovieAdapter(Cinema_movie.this, movie_Image, movie_Name);
         ListView movie_list = findViewById(R.id.movie_list);
         movie_list.setAdapter(cinemaMovieAdapter);
+
+
     }
 }

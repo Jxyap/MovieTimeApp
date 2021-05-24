@@ -7,12 +7,13 @@
     android:background="@color/black"
     tools:context=".Cinema">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cinemaList"
         android:layout_width="match_parent"
         android:layout_height="530dp"
         android:layout_marginTop="20dp"
-        android:dividerHeight="12sp"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/cinema_layout"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btm_nav_bar"

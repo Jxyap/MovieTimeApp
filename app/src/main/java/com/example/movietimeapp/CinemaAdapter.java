@@ -2,58 +2,79 @@ package com.example.movietimeapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class CinemaAdapter extends ArrayAdapter {
-    final Context context;
-    final Integer photo[];
-    private final String cinema_name[];
-    private final String cinema_hall[];
+import com.squareup.picasso.Picasso;
 
-    public CinemaAdapter(@NonNull Context context, Integer photo[], String cinema_name[], String cinema_hall[]) {
-        super(context, R.layout.cinema_layout, cinema_name);
+import java.util.ArrayList;
+import java.util.List;
+
+public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaHolder> {
+
+    Context context;
+    ArrayList<CinemaModel> cinemaItems;
+
+    public CinemaAdapter(Context context, ArrayList<CinemaModel> cinemaItems) {
         this.context = context;
-        this.photo = photo;
-        this.cinema_name = cinema_name;
-        this.cinema_hall = cinema_hall;
+        this.cinemaItems = cinemaItems;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.cinema_layout, null, true);
+    public CinemaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.cinema_layout,parent,false);
+        return new CinemaHolder(view);
+    }
 
-        TextView cinemaName = rowView.findViewById(R.id.cinemaName);
-        TextView cinemaInfo = rowView.findViewById(R.id.hallInfo);
-        ImageView cinemaPhoto = rowView.findViewById(R.id.imageView);
-        Button forwardButton = rowView.findViewById(R.id.forward_btn);
+    @Override
+    public void onBindViewHolder(@NonNull CinemaHolder holder, int position) {
+        CinemaModel cinemaModel = cinemaItems.get(position);
+        holder.name.setText(cinemaModel.getName());
+        holder.info.setText(cinemaModel.getInfo());
 
-        cinemaName.setText(cinema_name[position]);
-        cinemaInfo.setText(cinema_hall[position]);
-        cinemaPhoto.setImageResource(photo[position]);
+        Picasso.get().load(cinemaModel.getPhoto()).into(holder.cinemaImg);
 
-        forwardButton.setOnClickListener(new View.OnClickListener() {
+        holder.fwd_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String cName = (String) cinemaName.getText();
-
-                switch (cName){
-                    case "TGV KUANTAN":
-                        context.startActivity(new Intent(getContext(), Cinema_movie.class));
-                }
+                Intent intent = new Intent(context, Cinema_movie.class);
+                intent.putExtra("cinema", cinemaModel.getName());
+                context.startActivity(intent);
             }
         });
+    }
 
-        return rowView;
+    @Override
+    public int getItemCount() {
+        return cinemaItems.size();
+    }
+
+    public static class CinemaHolder extends RecyclerView.ViewHolder{
+
+        ImageView cinemaImg;
+        TextView name, info;
+        Button fwd_Btn;
+
+        public CinemaHolder(@NonNull View itemView) {
+            super(itemView);
+            cinemaImg = itemView.findViewById(R.id.cinema_img);
+            name = itemView.findViewById(R.id.cinemaName);
+            info = itemView.findViewById(R.id.hallInfo);
+            fwd_Btn = itemView.findViewById(R.id.forward_btn);
+        }
     }
 }
+

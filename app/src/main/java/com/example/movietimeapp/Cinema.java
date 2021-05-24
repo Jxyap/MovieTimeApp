@@ -8,10 +8,24 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class Cinema extends AppCompatActivity {
+
+    private ArrayList<CinemaModel> cinemaList;
+    private RecyclerView listCinema;
+    private DatabaseReference databaseReference;
+    private CinemaAdapter cinemaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +35,30 @@ public class Cinema extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Cinema");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Cinema");
+        listCinema = findViewById(R.id.cinemaList);
+        listCinema.setHasFixedSize(true);
+        listCinema.setLayoutManager(new LinearLayoutManager(this));
+
+        cinemaList = new ArrayList<>();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    CinemaModel cinemaModel = ds.getValue(CinemaModel.class);
+                    cinemaList.add(cinemaModel);
+                }
+                cinemaAdapter = new CinemaAdapter(Cinema.this, cinemaList);
+                listCinema.setAdapter(cinemaAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
         btm_nav.setSelectedItemId(R.id.navigation_cinema);
@@ -46,19 +84,5 @@ public class Cinema extends AppCompatActivity {
                 return false;
             }
         });
-
-        String cinema_name[] ={"TGV KUANTAN", "TGV KL", "TGV AMAN SETIA"};
-        Integer photo[] = {
-                R.drawable.tom_and_jerry,
-                R.drawable.godzilla_vs_kong,
-                R.drawable.border
-        };
-        String cinema_hall[]={"HALL 1", "HALL 2", "HALL 3"};
-
-        CinemaAdapter cinemaAdapter = new CinemaAdapter(Cinema.this, photo, cinema_name, cinema_hall);
-        ListView cinema_list = findViewById(R.id.cinemaList);
-        cinema_list.setAdapter(cinemaAdapter);
-
-
     }
 }

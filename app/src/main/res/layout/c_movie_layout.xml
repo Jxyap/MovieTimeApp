@@ -2,41 +2,128 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/black">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="375dp"
-        android:layout_height="170dp"
-        android:background="@drawable/border">
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/black">
 
-        <ImageView
-            android:id="@+id/movie"
-            android:layout_width="101dp"
-            android:layout_height="101dp"
-            android:layout_margin="12dp"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/movie_name"
-            android:layout_width="101dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="375dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="120dp"
-            android:text="Movie_Name"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:background="@drawable/border">
 
-        <Button
-            android:id="@+id/date_button"
-            android:layout_width="101dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="137dp"
-            android:layout_marginTop="12dp"
-            android:text="Select Date"/>
+            <ImageView
+                android:id="@+id/movie_poster"
+                android:layout_width="120dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/movieName"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="28dp"
+                android:gravity="center"
+                android:text="Movie Name"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/movie_poster"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expandableList"
+                android:layout_width="375dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_poster">
+
+                <Button
+                    android:id="@+id/movieDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Date"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/movieDate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Date"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/movieDate"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/movieDate3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Date"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/movieDate2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/movieTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="time"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/movieDate" />
+
+                <Button
+                    android:id="@+id/movieTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="time"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/movieTime"
+                    app:layout_constraintTop_toBottomOf="@+id/movieDate" />
+
+                <Button
+                    android:id="@+id/movieTime3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="time"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/movieTime2"
+                    app:layout_constraintTop_toBottomOf="@+id/movieDate2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -2,7 +2,9 @@ package com.example.movietimeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Cinema_movie extends AppCompatActivity {
@@ -34,23 +37,23 @@ public class Cinema_movie extends AppCompatActivity {
         actionBar.setTitle("Cinema - Movie & Time");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        String cName = getIntent().getStringExtra("cinema");
-        Toast.makeText(this, cName, Toast.LENGTH_SHORT).show();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Cinema");
         movie_list = findViewById(R.id.movie_list);
-        movie_list.setHasFixedSize(true);
-        movie_list.setLayoutManager(new LinearLayoutManager(this));
 
+        String cName = getIntent().getStringExtra("cinema");
         movieList = new ArrayList<>();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Cinema");
 
         databaseReference.child(cName).child("movie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()){
-                    cMovieModel cMovieModel = ds.getValue(cMovieModel.class);
-                    movieList.add(cMovieModel);
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    cMovieModel movieModel = ds.getValue(cMovieModel.class);
+                    movieList.add(movieModel);
                 }
-                movie_list.setAdapter(new CinemaMovieAdapter(Cinema_movie.this, movieList));
+                CinemaMovieAdapter cinemaMovieAdapter = new CinemaMovieAdapter(Cinema_movie.this, movieList, cName);
+                cinemaMovieAdapter.notifyDataSetChanged();
+                movie_list.setAdapter(cinemaMovieAdapter);
             }
 
             @Override

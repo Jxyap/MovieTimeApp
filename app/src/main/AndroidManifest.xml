@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTimeApp">
-        <activity android:name=".edit_profile"></activity>
+        <activity android:name=".payment"></activity>
+        <activity android:name=".edit_profile" />
         <activity android:name=".registration" />
         <activity android:name=".login" />
         <activity

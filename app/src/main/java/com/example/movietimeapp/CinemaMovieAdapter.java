@@ -72,7 +72,6 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectDate = holder.date.getText().toString();
                 holder.date.setTextColor(Color.RED);
                 holder.date2.setTextColor(Color.WHITE);
                 holder.date3.setTextColor(Color.WHITE);
@@ -101,7 +100,6 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.date2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectDate = holder.date2.getText().toString();
                 holder.date2.setTextColor(Color.RED);
                 holder.date.setTextColor(Color.WHITE);
                 holder.date3.setTextColor(Color.WHITE);
@@ -130,7 +128,6 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.date3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectDate = holder.date3.getText().toString();
                 holder.date3.setTextColor(Color.RED);
                 holder.date2.setTextColor(Color.WHITE);
                 holder.date.setTextColor(Color.WHITE);
@@ -158,6 +155,13 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(holder.date.getTextColors().getDefaultColor() == Color.RED)
+                    selectDate = holder.date.getText().toString();
+                else if(holder.date2.getTextColors().getDefaultColor() == Color.RED)
+                    selectDate = holder.date2.getText().toString();
+                else
+                    selectDate = holder.date3.getText().toString();
+
                 Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
                                 " in " + cName + " on " + selectDate + " " + holder.time.getText().toString(), Toast.LENGTH_LONG).show();
             }
@@ -166,6 +170,13 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.time2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(holder.date.getTextColors().getDefaultColor() == Color.RED)
+                    selectDate = holder.date.getText().toString();
+                else if(holder.date2.getTextColors().getDefaultColor() == Color.RED)
+                    selectDate = holder.date2.getText().toString();
+                else
+                    selectDate = holder.date3.getText().toString();
+
                 Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
                                 " in " + cName + " on " + selectDate + " " + holder.time2.getText().toString(), Toast.LENGTH_LONG).show();
             }
@@ -174,6 +185,13 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.time3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(holder.date.getTextColors().getDefaultColor() == Color.RED)
+                    selectDate = holder.date.getText().toString();
+                else if(holder.date2.getTextColors().getDefaultColor() == Color.RED)
+                    selectDate = holder.date2.getText().toString();
+                else
+                    selectDate = holder.date3.getText().toString();
+
                 Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
                                 " in " + cName + " on " + selectDate + " " + holder.time3.getText().toString(), Toast.LENGTH_LONG).show();
             }

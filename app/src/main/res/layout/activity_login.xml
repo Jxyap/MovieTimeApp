@@ -14,7 +14,8 @@
         android:layout_width="236dp"
         android:layout_height="191dp"
         android:layout_marginLeft="90dp"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:layout_marginStart="90dp" />
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -26,7 +27,8 @@
         android:text="WELCOME TO"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginStart="140dp" />
 
     <TextView
         android:id="@+id/tv_welcome1"
@@ -37,7 +39,8 @@
         android:text="MOVIE TIME APP"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginStart="120dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -50,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_Lemail"
                 android:inputType="textEmailAddress"
-                android:hint="Email" />
+                android:hint="@string/email" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_Lpassword"
                 android:inputType="textPassword"
-                android:hint="Password"
+                android:hint="@string/password"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,11 +80,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="440dp"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:textSize="25sp"
         android:textStyle="bold" />
-
-
 
     <TextView
         android:id="@+id/tv_Forgotpassword"
@@ -89,14 +90,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:layout_centerHorizontal="true"
-        android:text="Forgot Password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/white"
         android:textSize="18sp"/>
         <TextView
             android:id="@+id/tv_Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If do not having an account, Register here"
+            android:text="@string/register"
             android:layout_marginTop="560dp"
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"/>

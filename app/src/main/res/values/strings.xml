@@ -1,12 +1,39 @@
 <resources>
     <string name="app_name">MovieTimeApp</string>
+
+    <!--navigation bar-->
     <string name="title_home">HOME</string>
     <string name="title_cinema">CINEMA</string>
     <string name="title_profile">ACCOUNT</string>
     <string name="title_contact_us">CONTACT US</string>
+
+    <!--cinema_movie activity-->
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="movie_name">Movie Name</string>
     <string name="movie_poster">movie_poster</string>
     <string name="cinema_photo">Cinema Picture</string>
+
+    <!--payment activity -->
+    <string name="payment_confirm">CONFIRM PAYMENT</string>
+    <string name="ticket_details">Details of Ticket</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="ccv">CCV:</string>
+    <string name="expire_date">Expire Date:</string>
+    <string name="card_type">Card Type:</string>
+    <string name="cardNo">Card Number:</string>
+
+    <!--account activity-->
+    <string name="name">NAME</string>
+    <string name="edProfile">Edit Profile</string>
+    <string name="ticket">My Ticket</string>
+    <string name="logout">Logout</string>
+    <string name="image">User Image</string>
+
+    <!--login activity-->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">If do not having an account, Register here</string>
 </resources>

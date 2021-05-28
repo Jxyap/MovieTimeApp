@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,20 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
-        android:text="CONFIRM PAYMENT"
+        android:text="@string/payment_confirm"
         android:textColor="@color/white"
-        android:textSize="22dp"
-        android:textStyle="bold" />
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
-        android:text="Details of Ticket"
+        android:text="@string/ticket_details"
         android:textColor="@color/white"
-        android:textSize="13dp"
-        android:textStyle="bold" />
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:id="@+id/payment_price"
@@ -37,18 +38,20 @@
         android:layout_marginTop="100dp"
         android:text="................"
         android:textColor="@color/white"
-        android:textSize="13dp"
-        android:textStyle="bold" />
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="200dp"
-        android:text="Card Number:"
+        android:text="@string/cardNo"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -56,17 +59,20 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="200dp"
         android:backgroundTint="@color/white"
-        android:textColor="@color/white" />
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:layout_marginStart="180dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="260dp"
-        android:text="Card Type:"
+        android:text="@string/card_type"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp" />
 
     <Spinner
         android:id="@+id/payment_cardtype"
@@ -76,17 +82,19 @@
         android:layout_marginTop="260dp"
         android:textColor="@color/white"
         android:popupBackground="@color/black"
-        android:textSize="20dp" />
+        android:textSize="20sp"
+        android:layout_marginStart="180dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="320dp"
-        android:text="Expire Date:"
+        android:text="@string/expire_date"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"/>
 
     <EditText
         android:layout_width="200dp"
@@ -94,17 +102,19 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="320dp"
         android:backgroundTint="#FFFFFF"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_marginStart="180dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="380dp"
-        android:text="CCV:"
+        android:text="@string/ccv"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="70dp"
@@ -112,25 +122,18 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="380dp"
         android:backgroundTint="#FFFFFF"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_marginStart="180dp"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/payment_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="440dp"
-        android:text="Confirm"
-        android:textStyle="bold" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btm_nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/black"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_marginTop="460dp"
+        android:text="@string/confirm_btn"
+        android:textStyle="bold"
+        android:layout_marginStart="150dp"/>
 
 </RelativeLayout>

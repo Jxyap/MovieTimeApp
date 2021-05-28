@@ -158,24 +158,24 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         holder.time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() + " in " + cName + " on " + selectDate + " " + holder.time.getText().toString()
-                        , Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
+                                " in " + cName + " on " + selectDate + " " + holder.time.getText().toString(), Toast.LENGTH_LONG).show();
             }
         });
 
         holder.time2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() + " in " + cName + " on " + selectDate + " " + holder.time2.getText().toString()
-                        , Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
+                                " in " + cName + " on " + selectDate + " " + holder.time2.getText().toString(), Toast.LENGTH_LONG).show();
             }
         });
 
         holder.time3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() + " in " + cName + " on " + selectDate + " " + holder.time3.getText().toString()
-                        , Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
+                                " in " + cName + " on " + selectDate + " " + holder.time3.getText().toString(), Toast.LENGTH_LONG).show();
             }
         });
 

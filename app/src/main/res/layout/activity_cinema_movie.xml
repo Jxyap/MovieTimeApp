@@ -8,39 +8,13 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <TableRow
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:layout_width="125dp"
-            android:text="Movie"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="125dp"
-            android:text="Date"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="124dp"
-            android:gravity="center"
-            android:text="Time"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-    </TableRow>
-
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_list"
         android:layout_width="375dp"
         android:layout_height="520dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        tools:listitem="@layout/c_movie_layout"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>

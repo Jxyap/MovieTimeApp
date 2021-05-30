@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Payment.class);
+                Intent intent = new Intent(MainActivity.this, seatSelection.class);
                 startActivity(intent);
             }
         });

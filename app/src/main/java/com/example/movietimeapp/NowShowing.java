@@ -3,6 +3,7 @@ package com.example.movietimeapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,7 +40,7 @@ public class NowShowing extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("NowShowing");
         nsMovies = findViewById(R.id.nsMovie);
         nsMovies.setHasFixedSize(true);
-        nsMovies.setLayoutManager(new LinearLayoutManager(this));
+        nsMovies.setLayoutManager(new GridLayoutManager(this, 2));
 
         nsMovieList = new ArrayList<>();
 
@@ -57,31 +58,6 @@ public class NowShowing extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
-        btm_nav.setSelectedItemId(R.id.navigation_cinema);
-        btm_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.navigation_home:
-                        startActivity(new Intent(getApplicationContext(), Homepage.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.navigation_cinema:
-                        return true;
-                    case R.id.navigation_profile:
-                        startActivity(new Intent(getApplicationContext(), Account.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.navigation_contact_us:
-                        startActivity(new Intent(getApplicationContext(), Contact_us.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
             }
         });
     }

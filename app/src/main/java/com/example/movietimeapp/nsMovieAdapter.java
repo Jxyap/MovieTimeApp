@@ -21,7 +21,7 @@ public class nsMovieAdapter extends RecyclerView.Adapter<nsMovieAdapter.nsMovieH
     Context context;
     ArrayList<nsMovieModel> movieItems;
 
-    public nsMovieAdapter(NowShowing nowShowing, ArrayList<nsMovieModel> movieItems) {
+    public nsMovieAdapter(Context context, ArrayList<nsMovieModel> movieItems) {
         this.context = context;
         this.movieItems = movieItems;
     }
@@ -37,17 +37,8 @@ public class nsMovieAdapter extends RecyclerView.Adapter<nsMovieAdapter.nsMovieH
     public void onBindViewHolder(@NonNull nsMovieAdapter.nsMovieHolder holder, int position) {
         nsMovieModel NSmovieModel = movieItems.get(position);
         holder.movieName.setText(NSmovieModel.getName());
-
         Picasso.get().load(NSmovieModel.getPhoto()).into(holder.movieImg);
 
-        holder.fwd_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, Cinema_movie.class);
-                intent.putExtra("cinema", NSmovieModel.getName());
-                context.startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -59,13 +50,11 @@ public class nsMovieAdapter extends RecyclerView.Adapter<nsMovieAdapter.nsMovieH
 
         ImageView movieImg;
         TextView movieName;
-        Button fwd_Btn;
 
         public nsMovieHolder(@NonNull View itemView) {
             super(itemView);
             movieImg = itemView.findViewById(R.id.ns_movie_img);
             movieName = itemView.findViewById(R.id.nsMovieName);
-            fwd_Btn = itemView.findViewById(R.id.forward_btn);
 
         }
     }

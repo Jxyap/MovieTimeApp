@@ -2,18 +2,16 @@ package com.example.movietimeapp;
 
 public class nsMovieModel {
 
-    String name, photo;
+    String name, nsDescription, nsInfo, photo;
 
     public nsMovieModel() {
     }
 
-    public nsMovieModel(String name, String info, String photo) {
+    public nsMovieModel(String name, String nsDescription, String nsInfo, String photo) {
         this.name = name;
+        this.nsDescription = nsDescription;
+        this.nsInfo = nsInfo;
         this.photo = photo;
-    }
-
-    public String getPhoto() {
-        return photo;
     }
 
     public String getName() {
@@ -24,8 +22,27 @@ public class nsMovieModel {
         this.name = name;
     }
 
+    public String getNsDescription() {
+        return nsDescription;
+    }
+
+    public void setNsDescription(String nsDescription) {
+        this.nsDescription = nsDescription;
+    }
+
+    public String getNsInfo() {
+        return nsInfo;
+    }
+
+    public void setNsInfo(String nsInfo) {
+        this.nsInfo = nsInfo;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
 }

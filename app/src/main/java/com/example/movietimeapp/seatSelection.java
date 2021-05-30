@@ -9,36 +9,50 @@ import android.widget.ImageButton;
 
 public class seatSelection extends AppCompatActivity {
 
-    private int i,j;
-    private ImageButton button[][];
+
+    private ImageButton [] button;
+    private int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_selection);
 
-        for(int i=0; i<1; i++) {
-            for(int j=0; j<35; j++) {
-                String buttonID = "btn" + i + "-" + j;
+        button = new ImageButton[35];
+
+        for(int i=0; i<button.length; i++) {
+            {
+                String buttonID = "bt" + (i+1);
+
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-                button[i][j] = ( findViewById(resID));
+                button[i] = ((ImageButton) findViewById(resID));
+                button[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int index = 0;
+                        for (int i = 0; i < button.length; i++) {
+                            if (button[i].getId() == v.getId()) {
+                                index = i;
+                                break;
+                            }
+                        }
+                    }});
 
-            }
-        }
+            }}
 
-        button[i][j].setOnClickListener(new View.OnClickListener() {
+
+        button[i].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (button[i][j].isEnabled()) {
-                    button[i][j].setImageDrawable(getResources().getDrawable(R.drawable.selected));
+                if (button[i].isEnabled()) {
+                    button[i].setImageDrawable(getResources().getDrawable(R.drawable.selected));
 
                 }
-                else if (button[i][j].isEnabled()){
+                else if (button[i].isEnabled()){
 
-                    button[i][j].setImageDrawable(getResources().getDrawable(R.drawable.available));
+                    button[i].setImageDrawable(getResources().getDrawable(R.drawable.available));
                 }
             }
         });
-    }
-}
+    }}

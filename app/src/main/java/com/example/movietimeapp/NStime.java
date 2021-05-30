@@ -6,20 +6,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class NStime extends AppCompatActivity {
 
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference1;
     ArrayList<nsTimeModel> nsMovieList;
     RecyclerView nsMovie_list;
+    ImageView movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +35,13 @@ public class NStime extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         nsMovie_list = findViewById(R.id.nsMovie_list);
+        movie = findViewById(R.id.nsMovie);
 
         String nsName = getIntent().getStringExtra("movie");
         nsMovieList = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Time");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("movie");
 
         databaseReference.child(nsName).addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,5 +60,22 @@ public class NStime extends AppCompatActivity {
 
             }
         });
+
+        databaseReference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String url = snapshot.child(nsName).getValue(String.class);
+                Picasso.get().load(url).into(movie);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
     }
 }

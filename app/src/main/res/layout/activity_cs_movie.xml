@@ -8,10 +8,10 @@
     android:background="@color/black">
 
     <Button
-        android:id="@+id/btn_csCheck"
+        android:id="@+id/btn_csConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check Time"
+        android:text="Confirm"
         android:layout_marginTop="470dp"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"/>
@@ -22,6 +22,7 @@
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
+        android:textColor="@color/white"
         android:text="TextView" />
 
     <TextView
@@ -30,6 +31,8 @@
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="240dp"
+        android:textSize="18dp"
+        android:textColor="@color/white"
         android:text="TextView" />
 
     <TextView
@@ -38,6 +41,10 @@
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="280dp"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:justificationMode="inter_word"
         android:text="TextView" />
 
     <ImageView

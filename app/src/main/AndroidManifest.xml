@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTimeApp">
         <activity android:name=".ForgotPassword"/>
-        <activity android:name=".payment" />
+        <activity android:name=".Payment" />
         <activity android:name=".edit_profile" />
         <activity android:name=".registration" />
         <activity android:name=".login" />

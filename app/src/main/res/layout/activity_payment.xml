@@ -6,7 +6,7 @@
     android:background="@color/black"
     android:outlineAmbientShadowColor="#FFFFFF"
     android:outlineSpotShadowColor="#FFFFFF"
-    tools:context=".Contact_us">
+    tools:context=".Payment">
 
     <TextView
         android:layout_width="wrap_content"

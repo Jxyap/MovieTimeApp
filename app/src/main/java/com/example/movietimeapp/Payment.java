@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class payment extends AppCompatActivity {
+public class Payment extends AppCompatActivity {
 
     Spinner type;
 
@@ -21,7 +21,7 @@ public class payment extends AppCompatActivity {
 
         String[] card ={"VISA","MASTER","AMEX"};
 
-        ArrayAdapter list = new ArrayAdapter(payment.this,R.layout.custom_type_card,android.R.id.text1,card);
+        ArrayAdapter list = new ArrayAdapter(Payment.this,R.layout.custom_type_card,android.R.id.text1,card);
         type.setAdapter(list);
 
     }

@@ -127,6 +127,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
+            android:text="1"
             app:srcCompat="@drawable/available" />
 
         <ImageButton
@@ -137,6 +138,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
+            android:text="2"
             app:srcCompat="@drawable/available" />
 
         <ImageButton
@@ -147,6 +149,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
+            android:text="3"
             app:srcCompat="@drawable/available" />
 
 

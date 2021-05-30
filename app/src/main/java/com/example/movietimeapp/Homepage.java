@@ -3,6 +3,7 @@ package com.example.movietimeapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,20 @@ public class Homepage extends AppCompatActivity {
         mName = findViewById(R.id.slider_name);
 
         loadSlide();
+
+        ns_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Homepage.this, NowShowing.class));
+            }
+        });
+
+        cs_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Homepage.this, ComingSoon.class));
+            }
+        });
 
         BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
         btm_nav.setSelectedItemId(R.id.navigation_home);

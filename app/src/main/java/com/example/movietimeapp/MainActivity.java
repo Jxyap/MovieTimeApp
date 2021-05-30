@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn = findViewById(R.id.btn);
         Button btn2 = findViewById(R.id.btn2);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Payment.class);
+                Intent intent = new Intent(MainActivity.this, seatSelection.class);
                 startActivity(intent);
             }
         });

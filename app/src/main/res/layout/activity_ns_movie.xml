@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NSmovie"
+    android:background="@color/black">
+
+    <Button
+        android:id="@+id/btn_nsCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Time"
+        android:layout_marginTop="470dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_NSMovieName"
+        android:layout_width="367dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_NSMovieType"
+        android:layout_width="367dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_NSDescription"
+        android:layout_width="367dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="280dp"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/nsCinema"
+        android:layout_width="367dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+</RelativeLayout>

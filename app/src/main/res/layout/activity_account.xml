@@ -22,7 +22,6 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/image"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         tools:srcCompat="@tools:sample/avatars" />
@@ -33,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
-        android:text="@string/name"
+        android:text="NAME"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -44,10 +43,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
-        android:text="@string/edProfile"
+        android:text="Edit Profile"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:iconPadding="10dp"/>
+        app:iconPadding="10dp" />
 
     <Button
         android:id="@+id/btn_myticket"
@@ -55,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
-        android:text="@string/ticket"
+        android:text="My Ticket"
         android:textSize="25sp"
         android:textStyle="bold"
         app:iconPadding="10dp" />
@@ -66,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="450dp"
-        android:text="@string/logout"
+        android:text="Logout"
         android:textSize="25sp"
         android:textStyle="bold"
         app:iconPadding="10dp" />

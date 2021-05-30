@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTimeApp">
-        <activity android:name=".seatSelection">
+        <activity android:name=".seatSelection"/>
         <activity android:name=".Payment" />
         <activity android:name=".CSmovie" />
         <activity android:name=".ComingSoon" />

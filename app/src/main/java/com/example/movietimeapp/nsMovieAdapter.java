@@ -39,6 +39,14 @@ public class nsMovieAdapter extends RecyclerView.Adapter<nsMovieAdapter.nsMovieH
         holder.movieName.setText(NSmovieModel.getName());
         Picasso.get().load(NSmovieModel.getPhoto()).into(holder.movieImg);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, NSmovie.class);
+                intent.putExtra("movie",NSmovieModel.getName());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

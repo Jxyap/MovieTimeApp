@@ -41,11 +41,11 @@
         android:text="TextView" />
 
     <ImageView
-        android:id="@+id/nsCinema"
+        android:id="@+id/nsMovie"
         android:layout_width="367dp"
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>

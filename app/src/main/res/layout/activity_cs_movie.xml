@@ -8,16 +8,16 @@
     android:background="@color/black">
 
     <Button
-        android:id="@+id/btn_csBack"
+        android:id="@+id/btn_csCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BACK"
+        android:text="Check Time"
         android:layout_marginTop="470dp"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/tv_CSMovieName"
+        android:id="@+id/tv_csMovieName"
         android:layout_width="367dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tv_CSMovieType"
+        android:id="@+id/tv_csMovieType"
         android:layout_width="367dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -33,7 +33,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tv_CSDescription"
+        android:id="@+id/tv_csDescription"
         android:layout_width="367dp"
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
@@ -46,6 +46,6 @@
         android:layout_height="180dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>

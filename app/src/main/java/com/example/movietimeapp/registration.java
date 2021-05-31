@@ -2,6 +2,7 @@ package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -61,6 +62,9 @@ public class registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Registration");
 
         Lemail = findViewById(R.id.et_email);
         Lpassword = findViewById(R.id.et_password);

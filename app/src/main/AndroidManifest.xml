@@ -4,9 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,21 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTimeApp">
-        <activity android:name=".Ticket_confirmation"/>
-        <activity android:name=".seatSelection" />
+        <activity android:name=".seatSelection"/>
         <activity android:name=".Payment" />
         <activity android:name=".CSmovie" />
-        <activity
-            android:name=".ComingSoon"
-            android:parentActivityName=".Homepage"/>
+        <activity android:name=".ComingSoon" />
         <activity android:name=".NStime" />
         <activity android:name=".NSmovie" />
-        <activity
-            android:name=".NowShowing"
-            android:parentActivityName=".Homepage"/>
+        <activity android:name=".NowShowing" />
         <activity android:name=".edit_profile" />
         <activity android:name=".registration" />
         <activity android:name=".login" />
+        <activity android:name=".ForgotPassword" />
         <activity
             android:name=".Cinema_movie"
             android:parentActivityName=".Cinema" />

@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -27,6 +28,9 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Forgot Password");
+
         Lemail = findViewById(R.id.editTextForgotPassword);
         forgotPassword = findViewById(R.id.btn_ResetPassword);
 
@@ -45,7 +49,7 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
         private void resetPassword(){
-        String email = Lemail.getText().toString().trim();
+         String email = Lemail.getText().toString().trim();
 
         if(email.isEmpty()){
             Lemail.setError("Email is required!");

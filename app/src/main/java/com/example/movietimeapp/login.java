@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -19,6 +20,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class login extends AppCompatActivity {
 
@@ -33,6 +39,11 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Login");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
         Lemail = findViewById(R.id.et_Lemail);
         Lpassword = findViewById(R.id.et_Lpassword);
         login= findViewById(R.id.btn_login);
@@ -41,6 +52,7 @@ public class login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Logging In...");
+
 
 
         TVregister.setOnClickListener(new View.OnClickListener() {
@@ -73,12 +85,12 @@ public class login extends AppCompatActivity {
                     return;
                 }
 
-                    if(password.length()<8){
-                        Lpassword.setError("Password cannot less than 8 character!");
-                        Lpassword.requestFocus();
-                        return;
-                    }
-                    progressDialog.show();
+                if(password.length()<8){
+                    Lpassword.setError("Password cannot less than 8 character!");
+                    Lpassword.requestFocus();
+                    return;
+                }
+                progressDialog.show();
 
 
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -90,6 +102,7 @@ public class login extends AppCompatActivity {
 
                             if (user.isEmailVerified()){
                                 //get user email and is from auth
+
                                 finish();
                             }
                             else{
@@ -121,6 +134,8 @@ public class login extends AppCompatActivity {
         });
 
 
-}
+
+    }
+
 
 }

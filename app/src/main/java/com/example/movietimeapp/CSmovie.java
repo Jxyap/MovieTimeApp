@@ -5,13 +5,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,11 +56,11 @@ public class CSmovie extends AppCompatActivity {
         databaseReference.child(csMovie).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                csModel CSModel = snapshot.getValue(com.example.movietimeapp.csModel.class);
-                name.setText(CSModel.getName());
-                type.setText(CSModel.getCsInfo());
-                description.setText(CSModel.getCsDescription());
-                Picasso.get().load(CSModel.getPhoto()).into(movieImg);
+                ModelCS ModelCS = snapshot.getValue(ModelCS.class);
+                name.setText(ModelCS.getName());
+                type.setText(ModelCS.getCsInfo());
+                description.setText(ModelCS.getCsDescription());
+                Picasso.get().load(ModelCS.getPhoto()).placeholder(R.drawable.loading).into(movieImg);
             }
 
             @Override

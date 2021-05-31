@@ -1,40 +1,31 @@
 package com.example.movietimeapp;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.PipedInputStream;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 
-public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.ViewHolder> {
+public class AdapterCinemaMovie extends RecyclerView.Adapter<AdapterCinemaMovie.ViewHolder> {
 
     Context context;
-    ArrayList<cMovieModel> movieList;
+    ArrayList<ModelCinemaMovie> movieList;
     String cName;
     String selectDate;
 
-    public CinemaMovieAdapter(Context context, ArrayList<cMovieModel> movieList, String cName) {
+    public AdapterCinemaMovie(Context context, ArrayList<ModelCinemaMovie> movieList, String cName) {
         this.context = context;
         this.movieList = movieList;
         this.cName = cName;
@@ -49,10 +40,10 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        cMovieModel movieModel = movieList.get(position);
+        ModelCinemaMovie movieModel = movieList.get(position);
 
         holder.movie_name.setText(movieModel.getMovie());
-        Picasso.get().load(movieModel.getPoster()).into(holder.movie);
+        Picasso.get().load(movieModel.getPoster()).placeholder(R.drawable.loading).into(holder.movie);
         holder.date.setText(movieModel.getDate1());
         holder.date2.setText(movieModel.getDate2());
         holder.date3.setText(movieModel.getDate3());
@@ -241,8 +232,8 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    cMovieModel cMovieModel = movieList.get(getAdapterPosition());
-                    cMovieModel.setExpand(!cMovieModel.isExpand());
+                    ModelCinemaMovie ModelCinemaMovie = movieList.get(getAdapterPosition());
+                    ModelCinemaMovie.setExpand(!ModelCinemaMovie.isExpand());
                     notifyItemChanged(getAdapterPosition());
                 }
             });

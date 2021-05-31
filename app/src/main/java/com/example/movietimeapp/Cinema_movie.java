@@ -1,16 +1,10 @@
 package com.example.movietimeapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,14 +13,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Cinema_movie extends AppCompatActivity {
 
-    DatabaseReference databaseReference;
-    ArrayList<cMovieModel> movieList;
-    RecyclerView movie_list;
+    private DatabaseReference databaseReference;
+    private ArrayList<ModelCinemaMovie> movieList;
+    private RecyclerView movie_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +35,18 @@ public class Cinema_movie extends AppCompatActivity {
         String cName = getIntent().getStringExtra("cinema");
         movieList = new ArrayList<>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Cinema");
+        databaseReference = FirebaseDatabase.getInstance().getReference("cinema_movie");
 
-        databaseReference.child(cName).child("movie").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(cName).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()){
-                    cMovieModel movieModel = ds.getValue(cMovieModel.class);
+                    ModelCinemaMovie movieModel = ds.getValue(ModelCinemaMovie.class);
                     movieList.add(movieModel);
                 }
-                CinemaMovieAdapter cinemaMovieAdapter = new CinemaMovieAdapter(Cinema_movie.this, movieList, cName);
-                cinemaMovieAdapter.notifyDataSetChanged();
-                movie_list.setAdapter(cinemaMovieAdapter);
+                AdapterCinemaMovie adapterCinemaMovie = new AdapterCinemaMovie(Cinema_movie.this, movieList, cName);
+                adapterCinemaMovie.notifyDataSetChanged();
+                movie_list.setAdapter(adapterCinemaMovie);
             }
 
             @Override

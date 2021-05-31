@@ -3,7 +3,6 @@ package com.example.movietimeapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -22,10 +21,10 @@ import java.util.ArrayList;
 
 public class Cinema extends AppCompatActivity {
 
-    private ArrayList<CinemaModel> cinemaList;
+    private ArrayList<ModelCinema> cinemaList;
     private RecyclerView listCinema;
     private DatabaseReference databaseReference;
-    private CinemaAdapter cinemaAdapter;
+    private AdapterCinema adapterCinema;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +45,12 @@ public class Cinema extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    CinemaModel cinemaModel = ds.getValue(CinemaModel.class);
-                    cinemaList.add(cinemaModel);
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    ModelCinema modelCinema = ds.getValue(ModelCinema.class);
+                    cinemaList.add(modelCinema);
                 }
-                cinemaAdapter = new CinemaAdapter(Cinema.this, cinemaList);
-                listCinema.setAdapter(cinemaAdapter);
+                adapterCinema = new AdapterCinema(Cinema.this, cinemaList);
+                listCinema.setAdapter(adapterCinema);
             }
 
             @Override
@@ -65,20 +64,20 @@ public class Cinema extends AppCompatActivity {
         btm_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.navigation_home:
                         startActivity(new Intent(getApplicationContext(), Homepage.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.navigation_cinema:
                         return true;
                     case R.id.navigation_profile:
                         startActivity(new Intent(getApplicationContext(), Account.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.navigation_contact_us:
                         startActivity(new Intent(getApplicationContext(), Contact_us.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;

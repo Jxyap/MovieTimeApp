@@ -5,13 +5,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -57,11 +55,11 @@ public class NSmovie extends AppCompatActivity {
         databaseReference.child(nsMovie).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                nsMovieModel nsMovieModel = snapshot.getValue(com.example.movietimeapp.nsMovieModel.class);
-                name.setText(nsMovieModel.getName());
-                type.setText(nsMovieModel.getNsInfo());
-                description.setText(nsMovieModel.getNsDescription());
-                Picasso.get().load(nsMovieModel.getPhoto()).into(movie);
+                ModelMovieNS ModelMovieNS = snapshot.getValue(ModelMovieNS.class);
+                name.setText(ModelMovieNS.getName());
+                type.setText(ModelMovieNS.getNsInfo());
+                description.setText(ModelMovieNS.getNsDescription());
+                Picasso.get().load(ModelMovieNS.getPhoto()).placeholder(R.drawable.loading).into(movie);
                 }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

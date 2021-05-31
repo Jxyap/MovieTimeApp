@@ -4,14 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,10 +18,10 @@ import java.util.ArrayList;
 
 public class ComingSoon extends AppCompatActivity {
 
-    private ArrayList<csModel> csMovieList;
+    private ArrayList<ModelCS> csMovieList;
     private RecyclerView csMovies;
     private DatabaseReference databaseReference;
-    private csAdapter CSadapter;
+    private AdapterCS CSadapter;
 
 
     @Override
@@ -49,10 +45,10 @@ public class ComingSoon extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    csModel csModel = ds.getValue(csModel.class);
-                    csMovieList.add(csModel);
+                    ModelCS ModelCS = ds.getValue(ModelCS.class);
+                    csMovieList.add(ModelCS);
                 }
-                CSadapter = new csAdapter(ComingSoon.this, csMovieList);
+                CSadapter = new AdapterCS(ComingSoon.this, csMovieList);
                 csMovies.setAdapter(CSadapter);
             }
 

@@ -21,7 +21,7 @@ public class NStime extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     DatabaseReference databaseReference1;
-    ArrayList<nsTimeModel> nsMovieList;
+    ArrayList<ModelNSTime> nsMovieList;
     RecyclerView nsMovie_list;
     ImageView movie;
 
@@ -47,12 +47,12 @@ public class NStime extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()){
-                    nsTimeModel nsModel = ds.getValue(nsTimeModel.class);
+                    ModelNSTime nsModel = ds.getValue(ModelNSTime.class);
                     nsMovieList.add(nsModel);
                 }
-                NStimeAdapter nsTimeAdapter = new NStimeAdapter(NStime.this, nsMovieList, nsName);
-                nsTimeAdapter.notifyDataSetChanged();
-                nsMovie_list.setAdapter(nsTimeAdapter);
+                AdapterNStime nsTimeAdapterNStime = new AdapterNStime(NStime.this, nsMovieList, nsName);
+                nsTimeAdapterNStime.notifyDataSetChanged();
+                nsMovie_list.setAdapter(nsTimeAdapterNStime);
             }
 
             @Override

@@ -28,7 +28,7 @@ public class Homepage extends AppCompatActivity {
     private Button ns_Btn, cs_btn;
     private TextView mName;
     SliderView sliderView;
-    ArrayList<ImageSliderModel> list;
+    ArrayList<ModelImageSlider> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +93,10 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    ImageSliderModel imageSliderModel = ds.getValue(ImageSliderModel.class);
-                    list.add(imageSliderModel);
+                    ModelImageSlider modelImageSlider = ds.getValue(ModelImageSlider.class);
+                    list.add(modelImageSlider);
                 }
-                sliderView.setSliderAdapter(new imageAdapter(Homepage.this, list));
+                sliderView.setSliderAdapter(new AdapterImage(Homepage.this, list));
                 sliderView.startAutoCycle();
             }
             @Override

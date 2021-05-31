@@ -2,32 +2,26 @@ package com.example.movietimeapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaHolder> {
+public class AdapterCinema extends RecyclerView.Adapter<AdapterCinema.CinemaHolder> {
 
     Context context;
-    ArrayList<CinemaModel> cinemaItems;
+    ArrayList<ModelCinema> cinemaItems;
 
-    public CinemaAdapter(Context context, ArrayList<CinemaModel> cinemaItems) {
+    public AdapterCinema(Context context, ArrayList<ModelCinema> cinemaItems) {
         this.context = context;
         this.cinemaItems = cinemaItems;
     }
@@ -41,17 +35,17 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaHold
 
     @Override
     public void onBindViewHolder(@NonNull CinemaHolder holder, int position) {
-        CinemaModel cinemaModel = cinemaItems.get(position);
-        holder.name.setText(cinemaModel.getName());
-        holder.info.setText(cinemaModel.getInfo());
+        ModelCinema modelCinema = cinemaItems.get(position);
+        holder.name.setText(modelCinema.getName());
+        holder.info.setText(modelCinema.getInfo());
 
-        Picasso.get().load(cinemaModel.getPhoto()).into(holder.cinemaImg);
+        Picasso.get().load(modelCinema.getPhoto()).placeholder(R.drawable.loading).into(holder.cinemaImg);
 
         holder.fwd_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Cinema_movie.class);
-                intent.putExtra("cinema", cinemaModel.getName());
+                intent.putExtra("cinema", modelCinema.getName());
                 context.startActivity(intent);
             }
         });

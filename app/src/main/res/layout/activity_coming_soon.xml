@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComingSoon"
     android:background="@color/black"
-    android:orientation="vertical">
+    tools:context=".ComingSoon">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/csMovie"
+        android:layout_width="match_parent"
+        android:layout_height="530dp"
+        android:layout_marginTop="20dp"
+        tools:listitem="@layout/cs_movie_list"/>
 
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

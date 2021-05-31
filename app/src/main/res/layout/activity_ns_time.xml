@@ -1,60 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NStime"
+    tools:context=".Cinema_movie"
     android:background="@color/black"
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/nsCinema1"
+        android:id="@+id/nsMovie"
         android:layout_width="367dp"
         android:layout_height="180dp"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    <TableRow
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp">
+        tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:layout_width="125dp"
-            android:text="Cinema"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="125dp"
-            android:text="Date"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="124dp"
-            android:gravity="center"
-            android:text="Time"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-    </TableRow>
-
-    <ListView
-        android:id="@+id/lv_nsTime"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nsMovie_list"
         android:layout_width="375dp"
-        android:layout_height="185dp"
-        android:layout_gravity="center" />
-
-    <ListView
-        android:id="@+id/lv_nsTime1"
-        android:layout_width="375dp"
-        android:layout_height="185dp"
-        android:layout_gravity="center" />
+        android:layout_height="520dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        tools:listitem="@layout/ns_movie_time"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>
+</ScrollView>

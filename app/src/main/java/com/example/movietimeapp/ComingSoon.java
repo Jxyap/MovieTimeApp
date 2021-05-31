@@ -36,6 +36,7 @@ public class ComingSoon extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Coming Soon");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("ComingSoon");
         csMovies = findViewById(R.id.csMovie);

@@ -36,6 +36,7 @@ public class NowShowing extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Now Showing");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("NowShowing");
         nsMovies = findViewById(R.id.nsMovie);

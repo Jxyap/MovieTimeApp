@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -32,6 +33,9 @@ public class NSmovie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ns_movie);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Now Showing - Movie");
+
         name = findViewById(R.id.tv_NSMovieName);
         type = findViewById(R.id.tv_NSMovieType);
         description = findViewById(R.id.tv_NSDescription);
@@ -43,16 +47,13 @@ public class NSmovie extends AppCompatActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(NSmovie.this,NStime.class);
                 intent.putExtra("movie", nsMovie);
                 startActivity(intent);
-
             }
         });
 
         databaseReference = FirebaseDatabase.getInstance().getReference("NowShowing");
-
         databaseReference.child(nsMovie).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -61,9 +62,7 @@ public class NSmovie extends AppCompatActivity {
                 type.setText(nsMovieModel.getNsInfo());
                 description.setText(nsMovieModel.getNsDescription());
                 Picasso.get().load(nsMovieModel.getPhoto()).into(movie);
-
                 }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

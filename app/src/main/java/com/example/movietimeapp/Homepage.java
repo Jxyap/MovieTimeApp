@@ -36,7 +36,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Home");
+        actionBar.setTitle("Homepage");
 
         ns_Btn = findViewById(R.id.btn_ns);
         cs_btn = findViewById(R.id.btn_cs);
@@ -98,9 +98,7 @@ public class Homepage extends AppCompatActivity {
                 }
                 sliderView.setSliderAdapter(new imageAdapter(Homepage.this, list));
                 sliderView.startAutoCycle();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "unable to fetch data", Toast.LENGTH_SHORT).show();

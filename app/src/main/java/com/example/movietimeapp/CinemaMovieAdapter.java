@@ -3,6 +3,7 @@ package com.example.movietimeapp;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -162,8 +163,12 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
                 else
                     selectDate = holder.date3.getText().toString();
 
-                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
-                                " in " + cName + " on " + selectDate + " " + holder.time.getText().toString(), Toast.LENGTH_LONG).show();
+                Intent intent2seat = new Intent(context, seatSelection.class);
+                intent2seat.putExtra("cName", cName);
+                intent2seat.putExtra("movie", movieModel.getMovie());
+                intent2seat.putExtra("date", selectDate);
+                intent2seat.putExtra("time", holder.time.getText().toString());
+                context.startActivity(intent2seat);
             }
         });
 
@@ -177,8 +182,12 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
                 else
                     selectDate = holder.date3.getText().toString();
 
-                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
-                                " in " + cName + " on " + selectDate + " " + holder.time2.getText().toString(), Toast.LENGTH_LONG).show();
+                Intent intent2seat = new Intent(context, seatSelection.class);
+                intent2seat.putExtra("cName", cName);
+                intent2seat.putExtra("movie", movieModel.getMovie());
+                intent2seat.putExtra("date", selectDate);
+                intent2seat.putExtra("time", holder.time2.getText().toString());
+                context.startActivity(intent2seat);
             }
         });
 
@@ -192,8 +201,12 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
                 else
                     selectDate = holder.date3.getText().toString();
 
-                Toast.makeText(context, "You select " + holder.movie_name.getText().toString() +
-                                " in " + cName + " on " + selectDate + " " + holder.time3.getText().toString(), Toast.LENGTH_LONG).show();
+                Intent intent2seat = new Intent(context, seatSelection.class);
+                intent2seat.putExtra("cName", cName);
+                intent2seat.putExtra("movie", movieModel.getMovie());
+                intent2seat.putExtra("date", selectDate);
+                intent2seat.putExtra("time", holder.time3.getText().toString());
+                context.startActivity(intent2seat);
             }
         });
 

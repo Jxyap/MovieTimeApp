@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -32,6 +33,9 @@ public class CSmovie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cs_movie);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Coming Soon - Movie");
+
         name = findViewById(R.id.tv_csMovieName);
         type = findViewById(R.id.tv_csMovieType);
         description = findViewById(R.id.tv_csDescription);
@@ -43,11 +47,9 @@ public class CSmovie extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(CSmovie.this,Homepage.class);
                 intent.putExtra("movie", csMovie);
                 startActivity(intent);
-
             }
         });
 
@@ -57,12 +59,10 @@ public class CSmovie extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 csModel CSModel = snapshot.getValue(com.example.movietimeapp.csModel.class);
-                Toast.makeText(CSmovie.this, csMovie, Toast.LENGTH_SHORT).show();
                 name.setText(CSModel.getName());
                 type.setText(CSModel.getCsInfo());
                 description.setText(CSModel.getCsDescription());
                 Picasso.get().load(CSModel.getPhoto()).into(movieImg);
-
             }
 
             @Override

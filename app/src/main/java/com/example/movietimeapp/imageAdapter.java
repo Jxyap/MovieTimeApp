@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,9 @@ public class imageAdapter extends SliderViewAdapter<imageAdapter.imageAdapterVH>
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, mName +" is Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, NSmovie.class);
+                intent.putExtra("movie", mName);
+                context.startActivity(intent);
             }
         });
     }

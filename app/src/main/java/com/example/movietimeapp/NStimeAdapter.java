@@ -3,6 +3,7 @@ package com.example.movietimeapp;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -164,6 +165,13 @@ public class NStimeAdapter extends RecyclerView.Adapter<NStimeAdapter.ViewHolder
 
                 Toast.makeText(context, "You select " + holder.cinemaName.getText().toString() +
                         " in " + nsName + " on " + selectDate + " " + holder.time.getText().toString(), Toast.LENGTH_LONG).show();
+
+                Intent intent2seat = new Intent(context, seatSelection.class);
+                intent2seat.putExtra("cName", nsModel.getCinema());
+                intent2seat.putExtra("movie", nsName);
+                intent2seat.putExtra("date", selectDate);
+                intent2seat.putExtra("time", holder.time.getText().toString());
+                context.startActivity(intent2seat);
             }
         });
 
@@ -179,6 +187,13 @@ public class NStimeAdapter extends RecyclerView.Adapter<NStimeAdapter.ViewHolder
 
                 Toast.makeText(context, "You select " + holder.cinemaName.getText().toString() +
                         " in " + nsName + " on " + selectDate + " " + holder.time2.getText().toString(), Toast.LENGTH_LONG).show();
+
+                Intent intent2seat = new Intent(context, seatSelection.class);
+                intent2seat.putExtra("cName", nsModel.getCinema());
+                intent2seat.putExtra("movie", nsName);
+                intent2seat.putExtra("date", selectDate);
+                intent2seat.putExtra("time", holder.time.getText().toString());
+                context.startActivity(intent2seat);
             }
         });
 
@@ -191,6 +206,13 @@ public class NStimeAdapter extends RecyclerView.Adapter<NStimeAdapter.ViewHolder
                     selectDate = holder.date2.getText().toString();
                 else
                     selectDate = holder.date3.getText().toString();
+
+                Intent intent2seat = new Intent(context, seatSelection.class);
+                intent2seat.putExtra("cName", nsModel.getCinema());
+                intent2seat.putExtra("movie", nsName);
+                intent2seat.putExtra("date", selectDate);
+                intent2seat.putExtra("time", holder.time.getText().toString());
+                context.startActivity(intent2seat);
             }
         });
 

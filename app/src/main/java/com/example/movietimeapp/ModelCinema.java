@@ -1,13 +1,13 @@
 package com.example.movietimeapp;
 
-public class CinemaModel {
+public class ModelCinema {
 
     String name, info, photo;
 
-    public CinemaModel() {
+    public ModelCinema() {
     }
 
-    public CinemaModel(String name, String info, String photo) {
+    public ModelCinema(String name, String info, String photo) {
         this.name = name;
         this.info = info;
         this.photo = photo;

@@ -1,11 +1,11 @@
 package com.example.movietimeapp;
 
-public class nsTimeModel {
+public class ModelNSTime {
 
     private String cinema, photo, date1, date2, date3, time1, time2,time3, time4, time5, time6, time7, time8, time9;
     boolean expand;
 
-    public nsTimeModel() {
+    public ModelNSTime() {
     }
 
     public boolean isExpand() {
@@ -16,7 +16,7 @@ public class nsTimeModel {
         this.expand = expand;
     }
 
-    public nsTimeModel(String cinema, String photo, String date1, String date2, String date3,
+    public ModelNSTime(String cinema, String photo, String date1, String date2, String date3,
                        String time1, String time2, String time3, String time4, String time5,
                        String time6, String time7, String time8, String time9) {
         this.cinema = cinema;
@@ -36,7 +36,7 @@ public class nsTimeModel {
         this.expand = false;
     }
 
-    public nsTimeModel(String cinema, String photo, String date1, String date2, String time1, String time2) {
+    public ModelNSTime(String cinema, String photo, String date1, String date2, String time1, String time2) {
         this.cinema = cinema;
         this.photo = photo;
         this.date1 = date1;

@@ -4,14 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,10 +18,10 @@ import java.util.ArrayList;
 
 public class NowShowing extends AppCompatActivity {
 
-    private ArrayList<nsMovieModel> nsMovieList;
+    private ArrayList<ModelMovieNS> nsMovieList;
     private RecyclerView nsMovies;
     private DatabaseReference databaseReference;
-    private nsMovieAdapter NSmovieAdapter;
+    private AdapterMovieNS NSmovieAdapterMovieNS;
 
 
     @Override
@@ -49,11 +45,11 @@ public class NowShowing extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    nsMovieModel nsMovieModel = ds.getValue(nsMovieModel.class);
-                    nsMovieList.add(nsMovieModel);
+                    ModelMovieNS ModelMovieNS = ds.getValue(ModelMovieNS.class);
+                    nsMovieList.add(ModelMovieNS);
                 }
-                NSmovieAdapter = new nsMovieAdapter(NowShowing.this, nsMovieList);
-                nsMovies.setAdapter(NSmovieAdapter);
+                NSmovieAdapterMovieNS = new AdapterMovieNS(NowShowing.this, nsMovieList);
+                nsMovies.setAdapter(NSmovieAdapterMovieNS);
             }
 
             @Override

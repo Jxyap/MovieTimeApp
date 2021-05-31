@@ -1,13 +1,13 @@
 package com.example.movietimeapp;
 
-public class csModel {
+public class ModelCS {
 
     String name, csDescription, csInfo, photo;
 
-    public csModel() {
+    public ModelCS() {
     }
 
-    public csModel(String name, String csDescription, String csInfo, String photo) {
+    public ModelCS(String name, String csDescription, String csInfo, String photo) {
         this.name = name;
         this.csDescription = csDescription;
         this.csInfo = csInfo;

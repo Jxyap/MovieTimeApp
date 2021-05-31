@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,26 +15,26 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class csAdapter extends RecyclerView.Adapter<csAdapter.csMovieHolder> {
+public class AdapterCS extends RecyclerView.Adapter<AdapterCS.csMovieHolder> {
 
     Context context;
-    ArrayList<csModel> csItems;
+    ArrayList<ModelCS> csItems;
 
-    public csAdapter(Context context, ArrayList<csModel> csItems) {
+    public AdapterCS(Context context, ArrayList<ModelCS> csItems) {
         this.context = context;
         this.csItems = csItems;
     }
 
     @NonNull
     @Override
-    public csAdapter.csMovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterCS.csMovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.cs_movie_list,parent,false);
-        return new csAdapter.csMovieHolder(view);
+        return new AdapterCS.csMovieHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull csAdapter.csMovieHolder holder, int position) {
-        csModel CSmodel = csItems.get(position);
+    public void onBindViewHolder(@NonNull AdapterCS.csMovieHolder holder, int position) {
+        ModelCS CSmodel = csItems.get(position);
         holder.movieName.setText(CSmodel.getName());
         Picasso.get().load(CSmodel.getPhoto()).into(holder.movieImg);
 

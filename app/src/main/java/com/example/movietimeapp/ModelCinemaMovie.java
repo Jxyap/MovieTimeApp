@@ -1,11 +1,11 @@
 package com.example.movietimeapp;
 
-public class cMovieModel {
+public class ModelCinemaMovie {
 
     private String movie, poster, date1, date2, date3, time1, time2,time3, time4, time5, time6, time7, time8, time9;
     boolean expand;
 
-    public cMovieModel() {
+    public ModelCinemaMovie() {
     }
 
     public boolean isExpand() {
@@ -16,9 +16,9 @@ public class cMovieModel {
         this.expand = expand;
     }
 
-    public cMovieModel(String movie, String poster, String date1, String date2, String date3,
-                       String time1, String time2, String time3, String time4, String time5,
-                       String time6, String time7, String time8, String time9) {
+    public ModelCinemaMovie(String movie, String poster, String date1, String date2, String date3,
+                            String time1, String time2, String time3, String time4, String time5,
+                            String time6, String time7, String time8, String time9) {
         this.movie = movie;
         this.poster = poster;
         this.date1 = date1;
@@ -36,7 +36,7 @@ public class cMovieModel {
         this.expand = false;
     }
 
-    public cMovieModel(String movie, String poster, String date1, String date2, String time1, String time2) {
+    public ModelCinemaMovie(String movie, String poster, String date1, String date2, String time1, String time2) {
         this.movie = movie;
         this.poster = poster;
         this.date1 = date1;

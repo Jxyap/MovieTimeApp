@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,34 +15,34 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class nsMovieAdapter extends RecyclerView.Adapter<nsMovieAdapter.nsMovieHolder> {
+public class AdapterMovieNS extends RecyclerView.Adapter<AdapterMovieNS.nsMovieHolder> {
 
     Context context;
-    ArrayList<nsMovieModel> movieItems;
+    ArrayList<ModelMovieNS> movieItems;
 
-    public nsMovieAdapter(Context context, ArrayList<nsMovieModel> movieItems) {
+    public AdapterMovieNS(Context context, ArrayList<ModelMovieNS> movieItems) {
         this.context = context;
         this.movieItems = movieItems;
     }
 
     @NonNull
     @Override
-    public nsMovieAdapter.nsMovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterMovieNS.nsMovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.ns_movie_list,parent,false);
-        return new nsMovieAdapter.nsMovieHolder(view);
+        return new AdapterMovieNS.nsMovieHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull nsMovieAdapter.nsMovieHolder holder, int position) {
-        nsMovieModel NSmovieModel = movieItems.get(position);
-        holder.movieName.setText(NSmovieModel.getName());
-        Picasso.get().load(NSmovieModel.getPhoto()).into(holder.movieImg);
+    public void onBindViewHolder(@NonNull AdapterMovieNS.nsMovieHolder holder, int position) {
+        ModelMovieNS NSmovieModelMovieNS = movieItems.get(position);
+        holder.movieName.setText(NSmovieModelMovieNS.getName());
+        Picasso.get().load(NSmovieModelMovieNS.getPhoto()).placeholder(R.drawable.loading).into(holder.movieImg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, NSmovie.class);
-                intent.putExtra("movie",NSmovieModel.getName());
+                intent.putExtra("movie", NSmovieModelMovieNS.getName());
                 context.startActivity(intent);
             }
         });

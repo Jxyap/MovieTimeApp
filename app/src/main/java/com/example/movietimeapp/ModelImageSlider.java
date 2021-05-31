@@ -1,9 +1,9 @@
 package com.example.movietimeapp;
 
-public class ImageSliderModel {
+public class ModelImageSlider {
     String url, mName;
 
-    public ImageSliderModel() {
+    public ModelImageSlider() {
     }
 
     public String getUrl() {

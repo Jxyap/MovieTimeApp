@@ -1,40 +1,32 @@
 package com.example.movietimeapp;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.PipedInputStream;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 
-public class NStimeAdapter extends RecyclerView.Adapter<NStimeAdapter.ViewHolder> {
+public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder> {
 
     Context context;
-    ArrayList<nsTimeModel> nsMovie;
+    ArrayList<ModelNSTime> nsMovie;
     String nsName;
     String selectDate;
 
-    public NStimeAdapter(Context context, ArrayList<nsTimeModel> movieList, String nsName) {
+    public AdapterNStime(Context context, ArrayList<ModelNSTime> movieList, String nsName) {
         this.context = context;
         this.nsMovie = movieList;
         this.nsName = nsName;
@@ -49,10 +41,10 @@ public class NStimeAdapter extends RecyclerView.Adapter<NStimeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        nsTimeModel nsModel = nsMovie.get(position);
+        ModelNSTime nsModel = nsMovie.get(position);
 
         holder.cinemaName.setText(nsModel.getCinema());
-        Picasso.get().load(nsModel.getPhoto()).into(holder.cinema);
+        Picasso.get().load(nsModel.getPhoto()).placeholder(R.drawable.loading).into(holder.cinema);
         holder.date.setText(nsModel.getDate1());
         holder.date2.setText(nsModel.getDate2());
         holder.date3.setText(nsModel.getDate3());
@@ -247,8 +239,8 @@ public class NStimeAdapter extends RecyclerView.Adapter<NStimeAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nsTimeModel nsTimeModel = nsMovie.get(getAdapterPosition());
-                    nsTimeModel.setExpand(!nsTimeModel.isExpand());
+                    ModelNSTime ModelNSTime = nsMovie.get(getAdapterPosition());
+                    ModelNSTime.setExpand(!ModelNSTime.isExpand());
                     notifyItemChanged(getAdapterPosition());
                 }
             });

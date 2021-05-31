@@ -1,13 +1,13 @@
 package com.example.movietimeapp;
 
-public class nsMovieModel {
+public class ModelMovieNS {
 
     String name, nsDescription, nsInfo, photo;
 
-    public nsMovieModel() {
+    public ModelMovieNS() {
     }
 
-    public nsMovieModel(String name, String nsDescription, String nsInfo, String photo) {
+    public ModelMovieNS(String name, String nsDescription, String nsInfo, String photo) {
         this.name = name;
         this.nsDescription = nsDescription;
         this.nsInfo = nsInfo;

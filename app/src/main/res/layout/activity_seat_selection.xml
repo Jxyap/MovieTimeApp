@@ -564,12 +564,14 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/button2"
@@ -580,12 +582,13 @@
             tools:layout_editor_absoluteY="460dp" />
 
         <TextView
+            android:id="@+id/seat"
             android:layout_width="190dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text=".........."
             android:textColor="@color/white"
-            android:textSize="40sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/button3"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,22 +21,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class Account extends AppCompatActivity {
     private Button editProfile, myTicket, logout;
+    private ImageView profileImage;
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-
-
         editProfile = findViewById(R.id.btn_editprofile);
         myTicket = findViewById(R.id.btn_myticket);
         logout = findViewById(R.id.btn_logout);
-
-
+        profileImage = findViewById(R.id.imageView4);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Account");
@@ -62,6 +64,26 @@ public class Account extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String image = snapshot.child("image").getValue(String.class);
+                try {
+                    Picasso.get().load(image).placeholder(R.drawable.loading).into(profileImage);
+                }
+                catch (Exception e) {
+                    profileImage.setImageResource(R.drawable.profile);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

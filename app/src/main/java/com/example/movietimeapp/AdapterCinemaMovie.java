@@ -159,6 +159,7 @@ public class AdapterCinemaMovie extends RecyclerView.Adapter<AdapterCinemaMovie.
                 intent2seat.putExtra("movie", movieModel.getMovie());
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("back","cinema");
                 context.startActivity(intent2seat);
             }
         });
@@ -178,6 +179,7 @@ public class AdapterCinemaMovie extends RecyclerView.Adapter<AdapterCinemaMovie.
                 intent2seat.putExtra("movie", movieModel.getMovie());
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time2.getText().toString());
+                intent2seat.putExtra("back","cinema");
                 context.startActivity(intent2seat);
             }
         });
@@ -197,6 +199,7 @@ public class AdapterCinemaMovie extends RecyclerView.Adapter<AdapterCinemaMovie.
                 intent2seat.putExtra("movie", movieModel.getMovie());
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time3.getText().toString());
+                intent2seat.putExtra("back","cinema");
                 context.startActivity(intent2seat);
             }
         });

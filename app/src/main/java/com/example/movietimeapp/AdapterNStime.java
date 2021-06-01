@@ -163,6 +163,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }
         });
@@ -185,6 +186,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }
         });
@@ -204,6 +206,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }
         });

@@ -21,8 +21,10 @@ public class seatSelection extends AppCompatActivity {
     private ImageButton button[];
     private int i;
     private String available[];
-    TextView cinema_Name, Movie_name, date_Time, Seat;
-    ArrayList<String> selectedSeat;
+    private TextView cinema_Name, Movie_name, date_Time, Seat;
+    private Button back_btn;
+    private ArrayList<String> selectedSeat;
+    String back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +39,19 @@ public class seatSelection extends AppCompatActivity {
         Movie_name = findViewById(R.id.movie);
         date_Time = findViewById(R.id.date_time);
         Seat = findViewById(R.id.seat);
+        back_btn = findViewById(R.id.btn_back);
 
         if (intent.hasExtra("cName")) {
             String cinema = getIntent().getStringExtra("cName");
             String movie = getIntent().getStringExtra("movie");
             String date = getIntent().getStringExtra("date");
             String time = getIntent().getStringExtra("time");
+            back = getIntent().getStringExtra("back");
 
             cinema_Name.setText(cinema);
             Movie_name.setText(movie);
             date_Time.setText(date + " " + time);
+            Toast.makeText(this, getIntent().getStringExtra("back"), Toast.LENGTH_SHORT).show();
         }
 
         for (int i = 0; i < button.length; i++) {
@@ -76,6 +81,23 @@ public class seatSelection extends AppCompatActivity {
                     }
                 }
             });
+
+            back_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(back.equals("cinema")){
+                        Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
+                        backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
+                        startActivity(backIntent);
+                    }
+                    else{
+                        Intent backIntent = new Intent(seatSelection.this, NStime.class);
+                        backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
+                        startActivity(backIntent);
+                    }
+                }
+            });
+
         }
     }
 

@@ -33,7 +33,7 @@
             android:name=".Cinema_movie"
             android:parentActivityName=".Cinema" />
         <activity android:name=".Account" />
-        <activity android:name=".Contact_us" />
+        <activity android:name=".Ticket_confirmation" />
         <activity android:name=".Cinema" />
         <activity android:name=".Homepage" />
         <activity android:name=".MainActivity">

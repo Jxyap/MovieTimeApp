@@ -3,7 +3,6 @@ package com.example.movietimeapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.hardware.SensorEventListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,18 +10,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.nio.file.FileVisitOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class seatSelection extends AppCompatActivity {
 
     private ImageButton button[];
-    private int i;
     private String available[];
     private TextView cinema_Name, Movie_name, date_Time, Seat;
-    private Button back_btn;
+    private Button back_btn, confirm_btn;
     private ArrayList<String> selectedSeat;
     String back;
 
@@ -33,13 +28,13 @@ public class seatSelection extends AppCompatActivity {
 
         button = new ImageButton[35];
         available = new String[35];
-        selectedSeat = new ArrayList<>();
         Intent intent = getIntent();
         cinema_Name = findViewById(R.id.cinema);
         Movie_name = findViewById(R.id.movie);
         date_Time = findViewById(R.id.date_time);
         Seat = findViewById(R.id.seat);
         back_btn = findViewById(R.id.btn_back);
+        confirm_btn = findViewById(R.id.btn_confirm);
 
         if (intent.hasExtra("cName")) {
             String cinema = getIntent().getStringExtra("cName");
@@ -98,25 +93,29 @@ public class seatSelection extends AppCompatActivity {
                 }
             });
 
+            confirm_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent ticketIntern = new Intent(seatSelection.this,Ticket_confirmation.class);
+                    ticketIntern.putExtra("seat", selectedSeat);
+                    startActivity(ticketIntern);
+                }
+            });
+
         }
     }
 
     public void SeatSelected(){
 
         String selected = "";
-        String seat;
-        int j =0;
+        selectedSeat = new ArrayList<>();
+
         for(int i=0;i<available.length;i++){
             if(available[i]=="t") {
                 selected = selected + i + " ";
-                j++;
+                selectedSeat.add(String.valueOf(i));
             }
         }
         Seat.setText(selected);
-        selectedSeat.clear();
-        for(int i=0;i<j;i++){
-            seat = String.valueOf(selected.split(" "));
-            selectedSeat.add(seat);
-        }
     }
 }

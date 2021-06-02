@@ -16,12 +16,15 @@ public class Ticket_confirmation extends AppCompatActivity {
     private ArrayList<String> seat;
     private TextView seatNo, movieTV, cinemaTV, dateTV, timeTV;
     private String cinema, movie, date, time, back;
+    private String seatDisplay ="";
+    private String seatChoose[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_confirmation);
 
+        seatChoose = new String[35];
         Intent intent = getIntent();
         seat = new ArrayList<>();
         seatNo = findViewById(R.id.seat_no);
@@ -42,7 +45,16 @@ public class Ticket_confirmation extends AppCompatActivity {
             movieTV.setText(movie);
             dateTV.setText(date);
             timeTV.setText(time);
-            seatNo.setText(String.valueOf(seat));
+            
+            for(int i=0;i<seat.size();i++){
+                if(i==0)
+                    seatDisplay = seatDisplay + seat.get(i);
+                else
+                    seatDisplay = seatDisplay +", "+ seat.get(i);
+                
+                seatChoose[i]=seat.get(i);
+            }
+            seatNo.setText(seatDisplay);
         }
 
     }

@@ -122,6 +122,6 @@ public class seatSelection extends AppCompatActivity {
                 selectedSeat.add(String.valueOf(i));
             }
         }
-        Seat.setText(selected);
+        Seat.setText("Seat(s): "+selected);
     }
 }

@@ -19,7 +19,7 @@ public class seatSelection extends AppCompatActivity {
     private TextView cinema_Name, Movie_name, date_Time, Seat;
     private Button back_btn, confirm_btn;
     private ArrayList<String> selectedSeat;
-    String back;
+    private String cinema, movie, date, time, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +37,15 @@ public class seatSelection extends AppCompatActivity {
         confirm_btn = findViewById(R.id.btn_confirm);
 
         if (intent.hasExtra("cName")) {
-            String cinema = getIntent().getStringExtra("cName");
-            String movie = getIntent().getStringExtra("movie");
-            String date = getIntent().getStringExtra("date");
-            String time = getIntent().getStringExtra("time");
+            cinema = getIntent().getStringExtra("cName");
+            movie = getIntent().getStringExtra("movie");
+            date = getIntent().getStringExtra("date");
+            time = getIntent().getStringExtra("time");
             back = getIntent().getStringExtra("back");
 
             cinema_Name.setText(cinema);
             Movie_name.setText(movie);
             date_Time.setText(date + " " + time);
-            Toast.makeText(this, getIntent().getStringExtra("back"), Toast.LENGTH_SHORT).show();
         }
 
         for (int i = 0; i < button.length; i++) {
@@ -97,7 +96,14 @@ public class seatSelection extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent ticketIntern = new Intent(seatSelection.this,Ticket_confirmation.class);
-                    ticketIntern.putExtra("seat", selectedSeat);
+                    if (intent.hasExtra("cName")) {
+                        ticketIntern.putExtra("seat", selectedSeat);
+                        ticketIntern.putExtra("cName", cinema);
+                        ticketIntern.putExtra("movie", movie);
+                        ticketIntern.putExtra("date", date);
+                        ticketIntern.putExtra("time", time);
+                        ticketIntern.putExtra("back", back);
+                    }
                     startActivity(ticketIntern);
                 }
             });

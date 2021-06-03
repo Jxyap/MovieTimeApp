@@ -114,6 +114,7 @@
         android:textStyle="bold"/>
 
     <Button
+        android:id="@+id/bt_tback"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
@@ -122,6 +123,7 @@
 
 
     <Button
+        android:id="@+id/bt_tconfirm"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"

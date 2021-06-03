@@ -23,6 +23,7 @@ public class Ticket_confirmation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_confirmation);
+        setTitle("confirmation");
 
         seatChoose = new String[35];
         Intent intent = getIntent();

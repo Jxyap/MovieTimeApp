@@ -1,46 +1,40 @@
 package com.example.movietimeapp;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 public class Contact_us extends AppCompatActivity {
+
+    private ImageButton call, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Contact us");
 
-        BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
-        btm_nav.setSelectedItemId(R.id.navigation_contact_us);
-        btm_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        call = findViewById(R.id.img_call);
+        email = findViewById(R.id.img_email);
+
+        setTitle("Contact Us");
+
+        call.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.navigation_home:
-                        startActivity(new Intent(getApplicationContext(), Homepage.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.navigation_cinema:
-                        startActivity(new Intent(getApplicationContext(), Cinema.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.navigation_profile:
-                        startActivity(new Intent(getApplicationContext(), Account.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.navigation_contact_us:
-                        return true;
-                }
-                return false;
+            public void onClick(View v) {
+                Intent intentcall = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0127891593"));
+                startActivity(intentcall);
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentemail = new Intent(Intent.ACTION_VIEW,Uri.parse("email: mad12345@gmail.com"));
+                startActivity(intentemail);
             }
         });
     }

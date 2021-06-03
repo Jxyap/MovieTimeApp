@@ -6,8 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,25 +64,25 @@ public class Account extends AppCompatActivity {
             }
         });
 
-        mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String image = snapshot.child("image").getValue(String.class);
-                try {
-                    Picasso.get().load(image).placeholder(R.drawable.loading).into(profileImage);
-                }
-                catch (Exception e) {
-                    profileImage.setImageResource(R.drawable.profile);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        mAuth = FirebaseAuth.getInstance();
+//        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+//        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                String image = snapshot.child("image").getValue(String.class);
+//                try {
+//                    Picasso.get().load(image).placeholder(R.drawable.loading).into(profileImage);
+//                }
+//                catch (Exception e) {
+//                    profileImage.setImageResource(R.drawable.profile);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +105,7 @@ public class Account extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intentLogout = new Intent(Account.this,login.class);
+                intentLogout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentLogout);
             }
         });

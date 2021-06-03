@@ -57,7 +57,9 @@
         android:layout_marginLeft="35dp"
         android:textSize="17sp"
         android:textStyle="bold"/>
+
     <TextView
+        android:id="@+id/tv_movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kong King"
@@ -68,6 +70,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/seat_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="........"
@@ -78,6 +81,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/tv_cinema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="........"
@@ -88,6 +92,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="........"
@@ -98,6 +103,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="........"

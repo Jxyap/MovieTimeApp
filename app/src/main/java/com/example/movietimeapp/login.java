@@ -102,8 +102,8 @@ public class login extends AppCompatActivity {
 
                             if (user.isEmailVerified()){
                                 //get user email and is from auth
-
                                 finish();
+                                startActivity(new Intent(login.this, Homepage.class));
                             }
                             else{
                                 user.sendEmailVerification();

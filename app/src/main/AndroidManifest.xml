@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTimeApp">
-        <activity android:name=".Contact_us"/>
+        <activity android:name=".TicketHistory"></activity>
+        <activity android:name=".Contact_us" />
         <activity android:name=".MyTicket" />
         <activity android:name=".qrCode" />
         <activity android:name=".seatSelection" />

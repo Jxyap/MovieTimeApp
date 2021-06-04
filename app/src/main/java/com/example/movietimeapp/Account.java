@@ -95,7 +95,7 @@ public class Account extends AppCompatActivity {
         myTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentTicket = new Intent(Account.this,edit_profile.class);
+                Intent intentTicket = new Intent(Account.this,MyTicket.class);
                 startActivity(intentTicket);
             }
         });

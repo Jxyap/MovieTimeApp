@@ -1,10 +1,16 @@
 package com.example.movietimeapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,29 +25,56 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 
 public class Homepage extends AppCompatActivity {
 
-    private Button ns_Btn, cs_btn;
-    private TextView mName;
-    SliderView sliderView;
-    ArrayList<ModelImageSlider> list;
+    private SliderView sliderView;
+    private ArrayList<ModelImageSlider> list;
+    private SensorManager sensorManager;
+    private Sensor lightSensor;
+    private float maxValue;
+    private SensorEventListener lightSensorListener;
+    private RelativeLayout screen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        setTitle("Homepage");
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Homepage");
-
-        ns_Btn = findViewById(R.id.btn_ns);
-        cs_btn = findViewById(R.id.btn_cs);
+        Button ns_Btn = findViewById(R.id.btn_ns);
+        Button cs_btn = findViewById(R.id.btn_cs);
         sliderView = findViewById(R.id.imageSlider);
-        mName = findViewById(R.id.slider_name);
+
+        screen = findViewById(R.id.screen);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        if (lightSensor == null) {
+            Toast.makeText(this, "The device has no light sensor !", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        // max value for light sensor
+        maxValue = lightSensor.getMaximumRange();
+
+        lightSensorListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                float value = event.values[0];
+                int newValue = (int) (255f * value / maxValue);
+                screen.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
 
         loadSlide();
 
@@ -85,6 +118,18 @@ public class Homepage extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(lightSensorListener, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(lightSensorListener);
+    }
+
     private void loadSlide(){
         list = new ArrayList<>();
 
@@ -97,6 +142,7 @@ public class Homepage extends AppCompatActivity {
                     list.add(modelImageSlider);
                 }
                 sliderView.setSliderAdapter(new AdapterImage(Homepage.this, list));
+                sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
                 sliderView.startAutoCycle();
             }
             @Override

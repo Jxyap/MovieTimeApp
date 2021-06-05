@@ -1,5 +1,6 @@
 package com.example.movietimeapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,14 +32,12 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+        setTitle("Account");
 
         editProfile = findViewById(R.id.btn_editprofile);
         myTicket = findViewById(R.id.btn_myticket);
         logout = findViewById(R.id.btn_logout);
         profileImage = findViewById(R.id.imageView4);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Account");
 
         BottomNavigationView btm_nav = findViewById(R.id.btm_nav_bar);
         btm_nav.setSelectedItemId(R.id.navigation_profile);
@@ -64,25 +64,25 @@ public class Account extends AppCompatActivity {
             }
         });
 
-//        mAuth = FirebaseAuth.getInstance();
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-//        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String image = snapshot.child("image").getValue(String.class);
-//                try {
-//                    Picasso.get().load(image).placeholder(R.drawable.loading).into(profileImage);
-//                }
-//                catch (Exception e) {
-//                    profileImage.setImageResource(R.drawable.profile);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String image = snapshot.child("image").getValue(String.class);
+                try {
+                    Picasso.get().load(image).placeholder(R.drawable.loading).into(profileImage);
+                }
+                catch (Exception e) {
+                    profileImage.setImageResource(R.drawable.profile);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +109,24 @@ public class Account extends AppCompatActivity {
                 startActivity(intentLogout);
             }
         });
+    }
 
-
+    @Override
+    public void onBackPressed(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you sure to quit ?")
+                .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Account.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
 }

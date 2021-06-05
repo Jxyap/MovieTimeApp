@@ -15,7 +15,9 @@
         app:itemBackground="@color/black"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:menu="@menu/navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/navigation">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <TextView
         android:id="@+id/txt_contact"

@@ -23,12 +23,14 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        /*if(user != null){
+        if(user != null){
             startActivity(new Intent(MainActivity.this, Homepage.class));
+            finish();
         }
         else{
             startActivity(new Intent(MainActivity.this, login.class));
-        }*/
+            finish();
+        }
 
         Button btn = findViewById(R.id.btn);
         Button btn2 = findViewById(R.id.btn2);
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Homepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 

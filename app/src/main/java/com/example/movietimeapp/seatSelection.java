@@ -50,7 +50,6 @@ public class seatSelection extends AppCompatActivity {
 
         for (int i = 0; i < button.length; i++) {
             String buttonID = "bt" + (i + 1);
-            available[i] = "f";
 
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
             button[i] = ((ImageButton) findViewById(resID));

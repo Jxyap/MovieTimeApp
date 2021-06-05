@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,14 +31,15 @@ public class seatSelection extends AppCompatActivity {
     private ArrayList<String> selectedSeat;
     private String cinema, movie, date, time, back;
     private DatabaseReference databaseReference;
+    private int array[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_selection);
 
-        button = new ImageButton[35];
-        available = new String[35];
+        button = new ImageButton[36];
+        available = new String[36];
         Intent intent = getIntent();
         cinema_Name = findViewById(R.id.cinema);
         Movie_name = findViewById(R.id.movie);
@@ -56,51 +59,32 @@ public class seatSelection extends AppCompatActivity {
             Movie_name.setText(movie);
             date_Time.setText(date + " " + time);
         }
+            String date_time = date+" "+time;
 
-        for (int i = 0; i < button.length; i++){
+             array= new int[36];
 
-            databaseReference = FirebaseDatabase.getInstance().getReference().child(cinema).child(movie).child("date_time");
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                
-                    }
+            databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
+           databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot snapshot) {
+                   String seat = snapshot.child("seat").getValue(String.class);
+                   String [] booked = seat.split(", ");
+                   for (int i=0; i< booked.length; i++){
+                       array[i]= Integer.parseInt(booked[i]);
 
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+                   }
+                   seatbooked();
+               }
 
-                }
-            });
-        }
+               @Override
+               public void onCancelled(@NonNull DatabaseError error) {
 
-        for (int i = 0; i < button.length; i++) {
-            String buttonID = "bt" + (i + 1);
-            available[i] = "f";
+               }
+           });
 
-            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-            button[i] = ((ImageButton) findViewById(resID));
-            button[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int index = 0;
-                    for (int i = 0; i < button.length; i++) {
-                        if (button[i].getId() == v.getId()) {
-                            index = i;
-                            if (available[i] == "f") {
-                                button[i].setImageResource(R.drawable.selected);
-                                available[i] = "t";
-                                SeatSelected();
-                            } else {
-                                button[i].setImageResource(R.drawable.available);
-                                available[i] = "f";
-                                SeatSelected();
-                            }
-                            break;
-                        }
-                    }
-                }
-            });
+
+
 
             back_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -135,7 +119,7 @@ public class seatSelection extends AppCompatActivity {
             });
 
         }
-    }
+
 
     public void SeatSelected(){
 
@@ -150,4 +134,55 @@ public class seatSelection extends AppCompatActivity {
         }
         Seat.setText("Seat(s): "+selected);
     }
+
+    public void seatbooked(){
+        for (int j=0; j<array.length;j++){
+            int i =array[j];
+            available[i]="s";
+
+        }
+        for (int i=0; i<button.length;i++){
+            if (available[i]=="s") {
+                continue;
+            } else
+                available[i]="f";
+        }
+
+        for (int i = 1; i < button.length; i++) {
+
+            String buttonID = "bt" + (i);
+
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            button[i] = ((ImageButton) findViewById(resID));
+
+
+            if  (available[i]=="s"){
+                button[i].setImageResource(R.drawable.booked);
+                button[i].setClickable(false);
+                button[i].setEnabled(false);
+            }
+
+            button[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int index = 0;
+                    for (int i = 0; i < button.length; i++) {
+                        if (button[i].getId() == v.getId()) {
+                            index = i;
+                            if (available[i] == "f") {
+                                button[i].setImageResource(R.drawable.selected);
+                                available[i] = "t";
+                                SeatSelected();
+                            } else {
+                                button[i].setImageResource(R.drawable.available);
+                                available[i] = "f";
+                                SeatSelected();
+                            }
+                            break;
+                        }
+                    }
+                }
+            });
+
+    }}
 }

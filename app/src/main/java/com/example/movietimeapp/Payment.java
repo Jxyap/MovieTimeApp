@@ -33,6 +33,7 @@ public class Payment extends AppCompatActivity {
     private String cinema, movie,date,time,payment;
     private FirebaseAuth mAuth;
     private EditText cardnum,et_edate,et_ccv;
+    private  String saveseat="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +70,12 @@ public class Payment extends AppCompatActivity {
         confrim_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cardnum.getText().toString().length()!=0 && et_edate.getText().toString().length()!=0 && et_ccv.getText().toString().length()!=0 ){
+             //   if (cardnum.getText().toString().length()!=0 && et_edate.getText().toString().length()!=0 && et_ccv.getText().toString().length()!=0 ){
                     saveSeatTicket();
                     saveTicketfunction();
-                }
-                else
-                    Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                    Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,7 +83,7 @@ public class Payment extends AppCompatActivity {
 
     public void saveTicketfunction(){
         final String timestamp = ""+System.currentTimeMillis();
-        String saveseat="";
+
         for (int i=0; i<seat.size();i++) {
             saveseat = saveseat+seat.get(i)+",";
         }
@@ -116,9 +117,8 @@ public class Payment extends AppCompatActivity {
 
     public void saveSeatTicket(){
         HashMap<String, Object> hashMap = new HashMap<>();
-        for (int i=0; i<seat.size();i++) {
-           hashMap.put(seat.get(i),"true");
-        }
+       hashMap.put("seat",saveseat);
+
 
 
         String date_time = date+" "+time;

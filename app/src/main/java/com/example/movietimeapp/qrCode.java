@@ -24,7 +24,7 @@ public class qrCode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_code);
-
+/*
         qrvalue = findViewById(R.id.et_qr);
         generateBtn = findViewById(R.id.btn_qr);
         qrImage = findViewById(R.id.img_qr);
@@ -41,6 +41,6 @@ public class qrCode extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
     }
 }

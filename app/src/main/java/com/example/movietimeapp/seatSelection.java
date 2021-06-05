@@ -57,23 +57,6 @@ public class seatSelection extends AppCompatActivity {
             date_Time.setText(date + " " + time);
         }
 
-        for (int i = 0; i < button.length; i++){
-
-            databaseReference = FirebaseDatabase.getInstance().getReference().child(cinema).child(movie).child("date_time");
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                
-                    }
-
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }
-
         for (int i = 0; i < button.length; i++) {
             String buttonID = "bt" + (i + 1);
 

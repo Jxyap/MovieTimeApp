@@ -155,9 +155,6 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 else
                     selectDate = holder.date3.getText().toString();
 
-                Toast.makeText(context, "You select " + holder.cinemaName.getText().toString() +
-                        " in " + nsName + " on " + selectDate + " " + holder.time.getText().toString(), Toast.LENGTH_LONG).show();
-
                 Intent intent2seat = new Intent(context, seatSelection.class);
                 intent2seat.putExtra("cName", nsModel.getCinema());
                 intent2seat.putExtra("movie", nsName);
@@ -178,14 +175,11 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 else
                     selectDate = holder.date3.getText().toString();
 
-                Toast.makeText(context, "You select " + holder.cinemaName.getText().toString() +
-                        " in " + nsName + " on " + selectDate + " " + holder.time2.getText().toString(), Toast.LENGTH_LONG).show();
-
                 Intent intent2seat = new Intent(context, seatSelection.class);
                 intent2seat.putExtra("cName", nsModel.getCinema());
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
-                intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("time", holder.time2.getText().toString());
                 intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }
@@ -205,7 +199,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("cName", nsModel.getCinema());
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
-                intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("time", holder.time3.getText().toString());
                 intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }

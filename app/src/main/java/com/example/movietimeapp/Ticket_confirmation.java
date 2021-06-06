@@ -79,7 +79,7 @@ public class Ticket_confirmation extends AppCompatActivity {
                     confirm2payment.putExtra("date", date);
                     confirm2payment.putExtra("time", time);
                     confirm2payment.putExtra("price", payment);
-                    confirm2payment.putExtra("seat", seat);
+                    confirm2payment.putExtra("seat", seatDisplay);
                 }
                 startActivity(confirm2payment);
             }

@@ -59,6 +59,7 @@ public class seatSelection extends AppCompatActivity {
 
         for (int i = 0; i < button.length; i++) {
             String buttonID = "bt" + (i + 1);
+            available[i]="f";
 
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
             button[i] = ((ImageButton) findViewById(resID));
@@ -69,7 +70,7 @@ public class seatSelection extends AppCompatActivity {
                     for (int i = 0; i < button.length; i++) {
                         if (button[i].getId() == v.getId()) {
                             index = i;
-                            if (available[i] == "f") {
+                            if (available[i].equals("f")) {
                                 button[i].setImageResource(R.drawable.selected);
                                 available[i] = "t";
                                 SeatSelected();

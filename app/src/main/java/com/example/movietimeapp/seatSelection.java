@@ -59,71 +59,66 @@ public class seatSelection extends AppCompatActivity {
             Movie_name.setText(movie);
             date_Time.setText(date + " " + time);
         }
-            String date_time = date+" "+time;
+        String date_time = date+" "+time;
 
-<<<<<<< HEAD
-        for (int i = 0; i < button.length; i++) {
-            String buttonID = "bt" + (i + 1);
-=======
-             array= new int[36];
+        array= new int[36];
 
-            databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
-           databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
-               @Override
-               public void onDataChange(@NonNull DataSnapshot snapshot) {
-                   String seat = snapshot.child("seat").getValue(String.class);
-                   String [] booked = seat.split(", ");
-                   for (int i=0; i< booked.length; i++){
-                       array[i]= Integer.parseInt(booked[i]);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
+        databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String seat = snapshot.child("seat").getValue(String.class);
+                String [] booked = seat.split(", ");
+                for (int i=0; i< booked.length; i++){
+                    array[i]= Integer.parseInt(booked[i]);
 
 
-                   }
-                   seatbooked();
-               }
-
-               @Override
-               public void onCancelled(@NonNull DatabaseError error) {
-
-               }
-           });
-
-
->>>>>>> Kithuey-
-
-
-            back_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(back.equals("cinema")){
-                        Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
-                        backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
-                        startActivity(backIntent);
-                    }
-                    else{
-                        Intent backIntent = new Intent(seatSelection.this, NStime.class);
-                        backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
-                        startActivity(backIntent);
-                    }
                 }
-            });
+                seatbooked();
+            }
 
-            confirm_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent ticketIntern = new Intent(seatSelection.this,Ticket_confirmation.class);
-                    if (intent.hasExtra("cName")) {
-                        ticketIntern.putExtra("seat", selectedSeat);
-                        ticketIntern.putExtra("cName", cinema);
-                        ticketIntern.putExtra("movie", movie);
-                        ticketIntern.putExtra("date", date);
-                        ticketIntern.putExtra("time", time);
-                        ticketIntern.putExtra("back", back);
-                    }
-                    startActivity(ticketIntern);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(back.equals("cinema")){
+                    Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
+                    backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
+                    startActivity(backIntent);
                 }
-            });
+                else{
+                    Intent backIntent = new Intent(seatSelection.this, NStime.class);
+                    backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
+                    startActivity(backIntent);
+                }
+            }
+        });
 
-        }
+        confirm_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ticketIntern = new Intent(seatSelection.this,Ticket_confirmation.class);
+                if (intent.hasExtra("cName")) {
+                    ticketIntern.putExtra("seat", selectedSeat);
+                    ticketIntern.putExtra("cName", cinema);
+                    ticketIntern.putExtra("movie", movie);
+                    ticketIntern.putExtra("date", date);
+                    ticketIntern.putExtra("time", time);
+                    ticketIntern.putExtra("back", back);
+                }
+                startActivity(ticketIntern);
+            }
+        });
+
+    }
 
 
     public void SeatSelected(){
@@ -189,5 +184,5 @@ public class seatSelection extends AppCompatActivity {
                 }
             });
 
-    }}
+        }}
 }

@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".TicketHistory">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
+    <TableLayout
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        app:tabIndicatorColor="#FFFFFF"
-        app:tabSelectedTextColor="#FFFFFF"
-        app:tabTextColor="#FFFFFF">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/my_ticket" />
+            android:background="@drawable/border"
+            android:weightSum="2">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/history" />
+            <TextView
+                android:id="@+id/tv_myTicket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="My Ticket"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
 
-    </com.google.android.material.tabs.TabLayout>
+            <TextView
+                android:id="@+id/tv_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="History"
+                android:background="#03A9F4"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:gravity="center"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_list"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        tools:listitem="@layout/ticket_layout"/>
 
 </RelativeLayout>

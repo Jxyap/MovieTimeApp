@@ -7,27 +7,43 @@
     android:background="@color/black"
     tools:context=".MyTicket">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btm_nav_bar"
-        android:layout_width="match_parent"
+    <TableLayout
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/black"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/navigation">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/txt_ticket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="My Tickets"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"
-        android:textStyle="bold" />
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_myTicket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#03A9F4"
+                android:gravity="center"
+                android:text="My Ticket"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="History"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:gravity="center"
+                />
+
+        </TableRow>
+
+    </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ticket_list"

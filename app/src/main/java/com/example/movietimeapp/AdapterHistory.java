@@ -22,12 +22,12 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHolder> {
 
     Context context;
     ArrayList<ModelTicket> ticket;
 
-    public CustomAdapter(Context context, ArrayList<ModelTicket> ticket) {
+    public AdapterHistory(Context context, ArrayList<ModelTicket> ticket) {
         this.context = context;
         this.ticket = ticket;
     }
@@ -36,7 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.ticket_layout,parent,false);
-        return new CustomAdapter.ViewHolder(view);
+        return new AdapterHistory.ViewHolder(view);
     }
 
     @Override
@@ -48,21 +48,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.cinemaName.setText(modelTicket.getCinemaName());
         holder.seat.setText("Seat(s): "+modelTicket.getSeat());
         Picasso.get().load(modelTicket.getPoster()).into(holder.poster);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentQr = new Intent(context, qrCode.class);
-                intentQr.putExtra("cinemaName", modelTicket.getCinemaName());
-                intentQr.putExtra("movie", modelTicket.getMovie());
-                intentQr.putExtra("date", modelTicket.getDate());
-                intentQr.putExtra("time", modelTicket.getTime());
-                intentQr.putExtra("seat", modelTicket.getSeat());
-                intentQr.putExtra("ticketID", modelTicket.getTicketID());
-                intentQr.putExtra("poster", modelTicket.getPoster());
-                context.startActivity(intentQr);
-            }
-        });
     }
 
     @Override

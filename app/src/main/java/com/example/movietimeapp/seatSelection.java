@@ -67,12 +67,14 @@ public class seatSelection extends AppCompatActivity {
         databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String seat = snapshot.child("seat").getValue(String.class);
-                String[] booked = seat.split(", ");
-                for (int i = 0; i < booked.length; i++) {
-                    array[i] = Integer.parseInt(booked[i]);
+                if(snapshot.exists()) {
+                    String seat = snapshot.child("seat").getValue(String.class);
+                    String[] booked = seat.split(", ");
+                    for (int i = 0; i < booked.length; i++) {
+                        array[i] = Integer.parseInt(booked[i]);
+                    }
+                    seatbooked();
                 }
-                seatbooked();
             }
 
             @Override

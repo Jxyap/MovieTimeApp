@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".qrCode">
 
     <TextView
@@ -14,31 +14,46 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
         android:text="QR Code"
-        android:textColor="#090909"
+        android:textColor="#6994BA"
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/et_qr"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:hint="QR Value"/>
+        android:textColor="@color/white"
+        android:text="Press the Generate button for generate the QR code"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="140dp"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Please press only when check in"
+        android:textColor="@color/white"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        />
 
     <ImageView
+        android:background="@color/white"
         android:id="@+id/img_qr"
         android:layout_width="190dp"
         android:layout_height="193dp"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
         android:src="@drawable/qr" />
 
     <Button
         android:id="@+id/btn_qr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="470dp"
         android:text="Generate" />
 
 </RelativeLayout>

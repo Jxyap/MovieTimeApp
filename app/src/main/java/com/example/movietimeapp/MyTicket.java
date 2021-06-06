@@ -1,6 +1,7 @@
 package com.example.movietimeapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class MyTicket extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     ArrayList<ModelTicket> ticket;
-    ArrayList poster;
+    TextView history, myTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,27 +41,37 @@ public class MyTicket extends AppCompatActivity {
         RecyclerView ticket_list = findViewById(R.id.ticket_list);
         ticket_list.setHasFixedSize(true);
         ticket_list.setLayoutManager(new LinearLayoutManager(this));
+        myTicket = findViewById(R.id.tv_myTicket);
+        history = findViewById(R.id.tv_history);
 
         mAuth = FirebaseAuth.getInstance();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        DatabaseReference databaseReference1  =FirebaseDatabase.getInstance().getReference("Poster");
         databaseReference.child(mAuth.getUid()).child("ticket").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ticket = new ArrayList<>();
-                poster = new ArrayList();
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    ModelTicket modelTicket = ds.getValue(ModelTicket.class);
-                    ticket.add(modelTicket);
+                if(snapshot.hasChildren()) {
+                    for(DataSnapshot ds : snapshot.getChildren()){
+                        ModelTicket modelTicket = ds.getValue(ModelTicket.class);
+                        ticket.add(modelTicket);
+                    }
                 }
-                ticket_list.setAdapter(new CustomAdapter(MyTicket.this, ticket, poster));
+                ticket_list.setAdapter(new CustomAdapter(MyTicket.this, ticket));
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyTicket.this, TicketHistory.class));
+                overridePendingTransition(0,0);
             }
         });
 

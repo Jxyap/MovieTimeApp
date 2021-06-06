@@ -167,6 +167,5 @@ public class Payment extends AppCompatActivity {
         String date_time = date + " " + time;
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
         databaseReference.child(cinema).child(movie).child(date_time).setValue(hashMap);
-
     }
 }

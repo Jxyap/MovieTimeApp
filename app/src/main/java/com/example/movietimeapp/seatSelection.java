@@ -59,92 +59,52 @@ public class seatSelection extends AppCompatActivity {
             Movie_name.setText(movie);
             date_Time.setText(date + " " + time);
         }
-        String date_time = date + " " + time;
 
-        array = new int[36];
+        String date_time = date+" "+time;
+
+        array= new int[36];
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
         databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String seat = snapshot.child("seat").getValue(String.class);
-                String[] booked = seat.split(", ");
-                for (int i = 0; i < booked.length; i++) {
-                    array[i] = Integer.parseInt(booked[i]);
-                    seatbooked();
+                String [] booked = seat.split(", ");
+                for (int i=0; i< booked.length; i++){
+                    array[i]= Integer.parseInt(booked[i]);
                 }
+                seatbooked();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
 
-//        for (int j = 0; j < array.length; j++) {
-//            int i = array[j];
-//            available[i] = "s";
-//        }
-//        for (int i = 0; i < button.length; i++) {
-//            if (available[i] == "s") {
-//                continue;
-//            } else
-//                available[i] = "f";
-//        }
-//
-//        for (int i = 1; i < button.length; i++) {
-//            String buttonID = "bt" + (i);
-//            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-//            button[i] = ((ImageButton) findViewById(resID));
-//
-//            if (available[i] == "s") {
-//                button[i].setImageResource(R.drawable.booked);
-//                button[i].setClickable(false);
-//                button[i].setEnabled(false);
-//            }
-//
-//            button[i].setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int index = 1;
-//                    for (int i = 1; i < button.length; i++) {
-//                        if (button[i].getId() == v.getId()) {
-//                            index = i;
-//                            if (available[i] == "f") {
-//                                button[i].setImageResource(R.drawable.selected);
-//                                available[i] = "t";
-//                                SeatSelected();
-//                            } else {
-//                                button[i].setImageResource(R.drawable.available);
-//                                available[i] = "f";
-//                                SeatSelected();
-//                            }
-//                            break;
-//                        }
-//                    }
-//                }
-//            });
-//        }
+               }
+           });
+      
+            back_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(back.equals("cinema")){
+                        Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
+                        backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
+                        startActivity(backIntent);
+                    }
+                    else{
+                        Intent backIntent = new Intent(seatSelection.this, NStime.class);
+                        backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
+                        startActivity(backIntent);
+                    }
 
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (back.equals("cinema")) {
-                    Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
-                    backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
-                    startActivity(backIntent);
-                } else {
-                    Intent backIntent = new Intent(seatSelection.this, NStime.class);
-                    backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
-                    startActivity(backIntent);
-                }
             }
         });
 
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ticketIntern = new Intent(seatSelection.this, Ticket_confirmation.class);
+                Intent ticketIntern = new Intent(seatSelection.this,Ticket_confirmation.class);
                 if (intent.hasExtra("cName")) {
                     ticketIntern.putExtra("seat", selectedSeat);
                     ticketIntern.putExtra("cName", cinema);

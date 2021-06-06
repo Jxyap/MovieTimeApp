@@ -1,7 +1,9 @@
 package com.example.movietimeapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -35,6 +37,7 @@ public class qrCode extends AppCompatActivity {
     String cinema, movie, date, time, seat, ticketID, poster;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +118,25 @@ public class qrCode extends AppCompatActivity {
         DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference.child(mAuth.getUid()).child("History").child(ticketID).setValue(hashMap);
         databaseReference1.child(mAuth.getUid()).child("ticket").child(ticketID).removeValue();
+    }
+
+    @Override
+    public void onBackPressed(){
+        builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you sure to quit ?")
+                .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        qrCode.super.onBackPressed();
+                        startActivity(new Intent(qrCode.this, MyTicket.class));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
 }

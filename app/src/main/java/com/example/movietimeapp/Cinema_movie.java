@@ -1,9 +1,12 @@
 package com.example.movietimeapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +23,7 @@ public class Cinema_movie extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ArrayList<ModelCinemaMovie> movieList;
     private RecyclerView movie_list;
+    private AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,5 +58,11 @@ public class Cinema_movie extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(this, Cinema.class));
     }
 }

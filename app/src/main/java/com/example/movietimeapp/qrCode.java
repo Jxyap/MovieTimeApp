@@ -82,24 +82,6 @@ public class qrCode extends AppCompatActivity {
                 saveHistory();
             }
         });
-/*
-        qrvalue = findViewById(R.id.et_qr);
-        generateBtn = findViewById(R.id.btn_qr);
-        qrImage = findViewById(R.id.img_qr);
-
-        generateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String data = qrvalue.getText().toString();
-                QRGEncoder qrgEncoder = new QRGEncoder(data, null, QRGContents.Type.TEXT, 500);
-                try {
-                    Bitmap qrBits = qrgEncoder.encodeAsBitmap();
-                    qrImage.setImageBitmap(qrBits);
-                } catch (WriterException e){
-                    e.printStackTrace();
-                }
-            }
-        });*/
     }
 
     public void saveHistory(){

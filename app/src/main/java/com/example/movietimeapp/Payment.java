@@ -168,4 +168,10 @@ public class Payment extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
         databaseReference.child(cinema).child(movie).child(date_time).setValue(hashMap);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, Ticket_confirmation.class));
+    }
 }

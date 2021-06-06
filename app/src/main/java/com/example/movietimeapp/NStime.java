@@ -2,9 +2,12 @@ package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -47,7 +50,7 @@ public class NStime extends AppCompatActivity {
         databaseReference.child(nsName).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     ModelNSTime nsModel = ds.getValue(ModelNSTime.class);
                     nsMovieList.add(nsModel);
                 }
@@ -75,8 +78,5 @@ public class NStime extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }

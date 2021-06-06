@@ -88,4 +88,10 @@ public class Ticket_confirmation extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, seatSelection.class));
+    }
 }

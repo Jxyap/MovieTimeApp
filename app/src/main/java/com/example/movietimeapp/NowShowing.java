@@ -2,10 +2,13 @@ package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +25,7 @@ public class NowShowing extends AppCompatActivity {
     private RecyclerView nsMovies;
     private DatabaseReference databaseReference;
     private AdapterMovieNS NSmovieAdapterMovieNS;
+    AlertDialog.Builder builder;
 
 
     @Override
@@ -44,7 +48,7 @@ public class NowShowing extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     ModelMovieNS ModelMovieNS = ds.getValue(ModelMovieNS.class);
                     nsMovieList.add(ModelMovieNS);
                 }
@@ -57,5 +61,11 @@ public class NowShowing extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, Homepage.class));
     }
 }

@@ -2,8 +2,10 @@ package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +47,7 @@ public class CSmovie extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CSmovie.this,Homepage.class);
+                Intent intent = new Intent(CSmovie.this, Homepage.class);
                 intent.putExtra("movie", csMovie);
                 startActivity(intent);
             }
@@ -68,5 +70,11 @@ public class CSmovie extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, NSmovie.class));
     }
 }

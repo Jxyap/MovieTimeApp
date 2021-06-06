@@ -2,8 +2,10 @@ package com.example.movietimeapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +28,7 @@ public class NSmovie extends AppCompatActivity {
     Button check;
     ImageView movie;
     String poster;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class NSmovie extends AppCompatActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NSmovie.this,NStime.class);
+                Intent intent = new Intent(NSmovie.this, NStime.class);
                 intent.putExtra("movie", nsMovie);
                 intent.putExtra("poster", poster);
                 startActivity(intent);
@@ -63,11 +66,12 @@ public class NSmovie extends AppCompatActivity {
                 type.setText(ModelMovieNS.getNsInfo());
                 description.setText(ModelMovieNS.getNsDescription());
                 Picasso.get().load(ModelMovieNS.getPhoto()).placeholder(R.drawable.loading).into(movie);
-                }
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-}
+    }
 }

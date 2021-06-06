@@ -59,9 +59,11 @@ public class seatSelection extends AppCompatActivity {
             Movie_name.setText(movie);
             date_Time.setText(date + " " + time);
         }
+
         String date_time = date+" "+time;
 
         array= new int[36];
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
         databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
@@ -80,25 +82,24 @@ public class seatSelection extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
 
+               }
+           });
+      
+            back_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(back.equals("cinema")){
+                        Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
+                        backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
+                        startActivity(backIntent);
+                    }
+                    else{
+                        Intent backIntent = new Intent(seatSelection.this, NStime.class);
+                        backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
+                        startActivity(backIntent);
+                    }
 
-
-
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(back.equals("cinema")){
-                    Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
-                    backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
-                    startActivity(backIntent);
-                }
-                else{
-                    Intent backIntent = new Intent(seatSelection.this, NStime.class);
-                    backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
-                    startActivity(backIntent);
-                }
             }
         });
 

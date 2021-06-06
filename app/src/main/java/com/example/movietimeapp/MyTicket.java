@@ -1,9 +1,5 @@
 package com.example.movietimeapp;
 
-<<<<<<< HEAD
-public class MyTicket {
-}
-=======
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,4 +45,3 @@ public class MyTicket extends AppCompatActivity {
         }
     }
 }
->>>>>>> 029ea1068d35522dc23d8b5fd376b65452636986

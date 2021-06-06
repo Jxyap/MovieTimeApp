@@ -40,7 +40,6 @@ public class Ticket_confirmation extends AppCompatActivity {
         bt_cfm = findViewById(R.id.bt_tconfirm);
         bt_back = findViewById(R.id.bt_tback);
 
-        if (intent.hasExtra("cName")) {
             cinema = getIntent().getStringExtra("cName");
             movie = getIntent().getStringExtra("movie");
             date = getIntent().getStringExtra("date");
@@ -62,7 +61,7 @@ public class Ticket_confirmation extends AppCompatActivity {
                 seatChoose[i]=seat.get(i);
             }
             seatNo.setText(seatDisplay);
-        }
+
 
         int price = 0;
         for(int i=0;i<seat.size();i++){

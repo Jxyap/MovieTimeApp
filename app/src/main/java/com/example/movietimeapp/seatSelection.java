@@ -47,6 +47,8 @@ public class seatSelection extends AppCompatActivity {
         Seat = findViewById(R.id.seat);
         back_btn = findViewById(R.id.btn_back);
         confirm_btn = findViewById(R.id.btn_confirm);
+        selectedSeat = new ArrayList<>();
+
 
         if (intent.hasExtra("cName")) {
             cinema = getIntent().getStringExtra("cName");
@@ -104,16 +106,19 @@ public class seatSelection extends AppCompatActivity {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ticketIntern = new Intent(seatSelection.this,Ticket_confirmation.class);
-                if (intent.hasExtra("cName")) {
+                if(selectedSeat.size()!=0){
+                    Intent ticketIntern = new Intent(seatSelection.this, Ticket_confirmation.class);
                     ticketIntern.putExtra("seat", selectedSeat);
                     ticketIntern.putExtra("cName", cinema);
                     ticketIntern.putExtra("movie", movie);
                     ticketIntern.putExtra("date", date);
                     ticketIntern.putExtra("time", time);
                     ticketIntern.putExtra("back", back);
+                    startActivity(ticketIntern);
                 }
-                startActivity(ticketIntern);
+                else{
+                    Toast.makeText(seatSelection.this, "Please select your seat first!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

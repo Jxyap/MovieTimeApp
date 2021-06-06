@@ -30,7 +30,7 @@
     <string name="logout">Logout</string>
     <string name="image">User Image</string>
 
-    <!--login activity-->
+    <!--Login activity-->
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>

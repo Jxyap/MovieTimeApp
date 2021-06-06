@@ -28,28 +28,8 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         else{
-            startActivity(new Intent(MainActivity.this, login.class));
+            startActivity(new Intent(MainActivity.this, Login.class));
             finish();
         }
-
-        Button btn = findViewById(R.id.btn);
-        Button btn2 = findViewById(R.id.btn2);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Homepage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, seatSelection.class);
-                startActivity(intent);
-            }
-        });
     }
 }

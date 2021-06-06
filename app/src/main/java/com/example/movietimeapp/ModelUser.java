@@ -1,14 +1,14 @@
 package com.example.movietimeapp;
 
-public class User {
+public class ModelUser {
 
      public String name, phone, image;
 
-    public User(){
+    public ModelUser(){
 
     }
 
-    public User( String name, String phone, String image) {
+    public ModelUser(String name, String phone, String image) {
 
         this.name = name;
         this.phone = phone;

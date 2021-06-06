@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class Ticket_confirmation extends AppCompatActivity {
     private ArrayList<String> seat;
     private TextView seatNo, movieTV, cinemaTV, dateTV, timeTV;
     private String cinema, movie, date, time, back;
-    private String seatDisplay ="";
+    private String seatDisplay = "";
     private String seatChoose[];
     private String payment;
 
@@ -40,39 +41,39 @@ public class Ticket_confirmation extends AppCompatActivity {
         bt_cfm = findViewById(R.id.bt_tconfirm);
         bt_back = findViewById(R.id.bt_tback);
 
-            cinema = getIntent().getStringExtra("cName");
-            movie = getIntent().getStringExtra("movie");
-            date = getIntent().getStringExtra("date");
-            time = getIntent().getStringExtra("time");
-            back = getIntent().getStringExtra("back");
-            seat = (ArrayList<String>) getIntent().getSerializableExtra("seat");
+        cinema = getIntent().getStringExtra("cName");
+        movie = getIntent().getStringExtra("movie");
+        date = getIntent().getStringExtra("date");
+        time = getIntent().getStringExtra("time");
+        back = getIntent().getStringExtra("back");
+        seat = (ArrayList<String>) getIntent().getSerializableExtra("seat");
 
-            cinemaTV.setText(cinema);
-            movieTV.setText(movie);
-            dateTV.setText(date);
-            timeTV.setText(time);
-            
-            for(int i=0;i<seat.size();i++){
-                if(i==0)
-                    seatDisplay = seatDisplay + seat.get(i);
-                else
-                    seatDisplay = seatDisplay +", "+ seat.get(i);
-                
-                seatChoose[i]=seat.get(i);
-            }
-            seatNo.setText(seatDisplay);
+        cinemaTV.setText(cinema);
+        movieTV.setText(movie);
+        dateTV.setText(date);
+        timeTV.setText(time);
+
+        for (int i = 0; i < seat.size(); i++) {
+            if (i == 0)
+                seatDisplay = seatDisplay + seat.get(i);
+            else
+                seatDisplay = seatDisplay + ", " + seat.get(i);
+
+            seatChoose[i] = seat.get(i);
+        }
+        seatNo.setText(seatDisplay);
 
 
         int price = 0;
-        for(int i=0;i<seat.size();i++){
-            price = price +10;
+        for (int i = 0; i < seat.size(); i++) {
+            price = price + 10;
         }
         payment = (String.valueOf(price));
         bt_cfm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent confirm2payment= new Intent (Ticket_confirmation.this,Payment.class);
-                if (intent.hasExtra("cName")){
+                Intent confirm2payment = new Intent(Ticket_confirmation.this, Payment.class);
+                if (intent.hasExtra("cName")) {
                     confirm2payment.putExtra("cName", cinema);
                     confirm2payment.putExtra("movie", movie);
                     confirm2payment.putExtra("date", date);

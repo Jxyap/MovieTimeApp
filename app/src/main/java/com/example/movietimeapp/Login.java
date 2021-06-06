@@ -20,13 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText Lemail, Lpassword;
     private Button login;
@@ -58,7 +53,7 @@ public class login extends AppCompatActivity {
         TVregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentToRegister = new Intent(login.this,registration.class);
+                Intent intentToRegister = new Intent(Login.this,registration.class);
                 startActivity(intentToRegister);
             }
         });
@@ -103,7 +98,7 @@ public class login extends AppCompatActivity {
                             if (user.isEmailVerified()){
                                 //get user email and is from auth
                                 finish();
-                                startActivity(new Intent(login.this, Homepage.class));
+                                startActivity(new Intent(Login.this, Homepage.class));
                             }
                             else{
                                 user.sendEmailVerification();
@@ -112,7 +107,7 @@ public class login extends AppCompatActivity {
                             }
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),"Failed to login!.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Failed to Login!.",Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -128,7 +123,7 @@ public class login extends AppCompatActivity {
         forgotP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentToForgot = new Intent(login.this,ForgotPassword.class);
+                Intent intentToForgot = new Intent(Login.this,ForgotPassword.class);
                 startActivity(intentToForgot);
             }
         });

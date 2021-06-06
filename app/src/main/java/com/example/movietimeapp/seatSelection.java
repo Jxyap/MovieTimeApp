@@ -61,7 +61,7 @@ public class seatSelection extends AppCompatActivity {
         String date_time = date + " " + time;
 
         array = new int[36];
-        
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
         databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
             @Override

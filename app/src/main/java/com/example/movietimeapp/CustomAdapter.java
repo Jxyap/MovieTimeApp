@@ -1,6 +1,9 @@
 package com.example.movietimeapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,36 +14,69 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class CustomAdapter extends ArrayAdapter {
+import com.squareup.picasso.Picasso;
 
-        final Context context;
-        private final String movie[];
-        final Integer logo[];
+import org.w3c.dom.Text;
 
-        public CustomAdapter(@NonNull Context context, String movie[], Integer logo[]) {
-            super(context, R.layout.activity_my_ticket, movie);
+import java.util.ArrayList;
 
-            this.context = context;
-            this.movie = movie;
-            this.logo = logo;
-        }
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    Context context;
+    ArrayList<ModelTicket> ticket;
+    ArrayList poster;
 
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView = inflater.inflate(R.layout.activity_my_ticket, null, true);
+    public CustomAdapter(Context context, ArrayList<ModelTicket> ticket, ArrayList poster) {
+        this.context = context;
+        this.ticket = ticket;
+        this.poster = poster;
+    }
 
-            TextView title = rowView.findViewById(R.id.txt_movie);
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.ticket_layout,parent,false);
+        return new CustomAdapter.ViewHolder(view);
+    }
 
-            ImageView image = rowView.findViewById(R.id.img_movie);
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ModelTicket modelTicket = ticket.get(position);
+        holder.movie.setText(modelTicket.getMovie());
+        holder.date.setText(modelTicket.getDate());
+        holder.time.setText(modelTicket.getTime());
+        holder.cinemaName.setText(modelTicket.getCinemaName());
+        Picasso.get().load(modelTicket.getPoster()).into(holder.poster);
 
-            title.setText(movie[position]);
-            image.setImageResource(logo[position]);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentQr = new Intent(context, qrCode.class);
+                context.startActivity(intentQr);
+            }
+        });
+    }
 
-            return rowView;
+    @Override
+    public int getItemCount() {
+        return ticket.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView movie, date, time, cinemaName;
+        ImageView poster;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            movie = itemView.findViewById(R.id.txt_movie);
+            date = itemView.findViewById(R.id.txt_date);
+            time = itemView.findViewById(R.id.txt_time);
+            cinemaName = itemView.findViewById(R.id.txt_cinemaName);
+            poster = itemView.findViewById(R.id.img_movie);
         }
     }
+}
 

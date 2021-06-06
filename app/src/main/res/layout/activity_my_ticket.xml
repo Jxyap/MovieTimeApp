@@ -29,43 +29,14 @@
         android:textSize="32sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/img_movie"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ticket_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/txt_movie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="140dp"
-        android:text="Movie Name"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txt_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="140dp"
-        android:text="Movie Date"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        tools:listitem="@layout/ticket_layout" />
 
-    <TextView
-        android:id="@+id/txt_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:layout_marginLeft="140dp"
-        android:text="Movie Time"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"/>
 
 </RelativeLayout>

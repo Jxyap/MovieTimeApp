@@ -49,32 +49,27 @@ public class seatSelection extends AppCompatActivity {
         confirm_btn = findViewById(R.id.btn_confirm);
         selectedSeat = new ArrayList<>();
 
+        cinema = getIntent().getStringExtra("cName");
+        movie = getIntent().getStringExtra("movie");
+        date = getIntent().getStringExtra("date");
+        time = getIntent().getStringExtra("time");
+        back = getIntent().getStringExtra("back");
 
-        if (intent.hasExtra("cName")) {
-            cinema = getIntent().getStringExtra("cName");
-            movie = getIntent().getStringExtra("movie");
-            date = getIntent().getStringExtra("date");
-            time = getIntent().getStringExtra("time");
-            back = getIntent().getStringExtra("back");
+        cinema_Name.setText(cinema);
+        Movie_name.setText(movie);
+        date_Time.setText(date + " " + time);
+        String date_time = date + " " + time;
 
-            cinema_Name.setText(cinema);
-            Movie_name.setText(movie);
-            date_Time.setText(date + " " + time);
-        }
-
-        String date_time = date+" "+time;
-
-        array= new int[36];
-
-
+        array = new int[36];
+        
         databaseReference = FirebaseDatabase.getInstance().getReference("Seat");
         databaseReference.child(cinema).child(movie).child(date_time).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String seat = snapshot.child("seat").getValue(String.class);
-                String [] booked = seat.split(", ");
-                for (int i=0; i< booked.length; i++){
-                    array[i]= Integer.parseInt(booked[i]);
+                String[] booked = seat.split(", ");
+                for (int i = 0; i < booked.length; i++) {
+                    array[i] = Integer.parseInt(booked[i]);
                 }
                 seatbooked();
             }
@@ -83,22 +78,21 @@ public class seatSelection extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
 
-               }
-           });
-      
-            back_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(back.equals("cinema")){
-                        Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
-                        backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
-                        startActivity(backIntent);
-                    }
-                    else{
-                        Intent backIntent = new Intent(seatSelection.this, NStime.class);
-                        backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
-                        startActivity(backIntent);
-                    }
+            }
+        });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (back.equals("cinema")) {
+                    Intent backIntent = new Intent(seatSelection.this, Cinema_movie.class);
+                    backIntent.putExtra("cinema", getIntent().getStringExtra("cName"));
+                    startActivity(backIntent);
+                } else {
+                    Intent backIntent = new Intent(seatSelection.this, NStime.class);
+                    backIntent.putExtra("movie", getIntent().getStringExtra("movie"));
+                    startActivity(backIntent);
+                }
 
             }
         });
@@ -106,7 +100,7 @@ public class seatSelection extends AppCompatActivity {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectedSeat.size()!=0){
+                if (selectedSeat.size() != 0) {
                     Intent ticketIntern = new Intent(seatSelection.this, Ticket_confirmation.class);
                     ticketIntern.putExtra("seat", selectedSeat);
                     ticketIntern.putExtra("cName", cinema);
@@ -115,8 +109,7 @@ public class seatSelection extends AppCompatActivity {
                     ticketIntern.putExtra("time", time);
                     ticketIntern.putExtra("back", back);
                     startActivity(ticketIntern);
-                }
-                else{
+                } else {
                     Toast.makeText(seatSelection.this, "Please select your seat first!", Toast.LENGTH_SHORT).show();
                 }
             }

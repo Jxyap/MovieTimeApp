@@ -80,8 +80,10 @@ public class Payment extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (cardnum.getText().toString().length() != 0 && et_edate.getText().toString().length() != 0 && et_ccv.getText().toString().length() != 0) {
-                            saveSeatTicket();
-                            saveTicketfunction();
+                            if(checkCard()){
+                                saveSeatTicket();
+                                saveTicketfunction();
+                            }
                         } else
                             Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
                     }
@@ -93,6 +95,34 @@ public class Payment extends AppCompatActivity {
 
             }
         });
+    }
+
+    public boolean checkCard(){
+        if (cardnum.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter valid card number!",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (cardnum.getText().toString().length()!=16){
+            Toast.makeText(getApplicationContext(),"Please enter valid card number!",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (et_edate.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter valid expired date!",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (et_edate.getText().toString().length()!=5){
+            Toast.makeText(getApplicationContext(),"Please enter valid expired date!",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (et_ccv.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter cvv!",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (et_ccv.getText().toString().length()!=3){
+            Toast.makeText(getApplicationContext(),"Please enter valid cvv!",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     public void saveTicketfunction() {

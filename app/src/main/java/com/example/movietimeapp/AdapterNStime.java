@@ -25,11 +25,13 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
     ArrayList<ModelNSTime> nsMovie;
     String nsName;
     String selectDate;
+    String poster;
 
-    public AdapterNStime(Context context, ArrayList<ModelNSTime> movieList, String nsName) {
+    public AdapterNStime(Context context, ArrayList<ModelNSTime> movieList, String nsName, String poster) {
         this.context = context;
         this.nsMovie = movieList;
         this.nsName = nsName;
+        this.poster = poster;
     }
 
     @NonNull
@@ -160,6 +162,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time.getText().toString());
+                intent2seat.putExtra("poster", poster);
                 intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }
@@ -180,6 +183,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time2.getText().toString());
+                intent2seat.putExtra("poster", poster);
                 intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }
@@ -200,6 +204,7 @@ public class AdapterNStime extends RecyclerView.Adapter<AdapterNStime.ViewHolder
                 intent2seat.putExtra("movie", nsName);
                 intent2seat.putExtra("date", selectDate);
                 intent2seat.putExtra("time", holder.time3.getText().toString());
+                intent2seat.putExtra("poster", poster);
                 intent2seat.putExtra("back", "movie");
                 context.startActivity(intent2seat);
             }

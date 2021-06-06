@@ -43,6 +43,7 @@ public class AdapterMovieNS extends RecyclerView.Adapter<AdapterMovieNS.nsMovieH
             public void onClick(View v) {
                 Intent intent = new Intent(context, NSmovie.class);
                 intent.putExtra("movie", NSmovieModelMovieNS.getName());
+                intent.putExtra("poster",NSmovieModelMovieNS.getPhoto());
                 context.startActivity(intent);
             }
         });

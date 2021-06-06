@@ -18,7 +18,7 @@ public class Ticket_confirmation extends AppCompatActivity {
     private Button bt_cfm, bt_back;
     private ArrayList<String> seat;
     private TextView seatNo, movieTV, cinemaTV, dateTV, timeTV;
-    private String cinema, movie, date, time, back;
+    private String cinema, movie, date, time, back, poster;
     private String seatDisplay = "";
     private String seatChoose[];
     private String payment;
@@ -46,6 +46,7 @@ public class Ticket_confirmation extends AppCompatActivity {
         date = getIntent().getStringExtra("date");
         time = getIntent().getStringExtra("time");
         back = getIntent().getStringExtra("back");
+        poster = getIntent().getStringExtra("poster");
         seat = (ArrayList<String>) getIntent().getSerializableExtra("seat");
 
         cinemaTV.setText(cinema);
@@ -80,6 +81,7 @@ public class Ticket_confirmation extends AppCompatActivity {
                     confirm2payment.putExtra("time", time);
                     confirm2payment.putExtra("price", payment);
                     confirm2payment.putExtra("seat", seatDisplay);
+                    confirm2payment.putExtra("poster", poster);
                 }
                 startActivity(confirm2payment);
             }

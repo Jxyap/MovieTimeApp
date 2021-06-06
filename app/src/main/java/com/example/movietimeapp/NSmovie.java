@@ -25,6 +25,7 @@ public class NSmovie extends AppCompatActivity {
     TextView name, type, description;
     Button check;
     ImageView movie;
+    String poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class NSmovie extends AppCompatActivity {
         description = findViewById(R.id.tv_NSDescription);
         check = findViewById(R.id.btn_nsCheck);
         movie = findViewById(R.id.nsMovie);
+        poster = getIntent().getStringExtra("poster");
 
         String nsMovie = getIntent().getStringExtra("movie");
 
@@ -47,6 +49,7 @@ public class NSmovie extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(NSmovie.this,NStime.class);
                 intent.putExtra("movie", nsMovie);
+                intent.putExtra("poster", poster);
                 startActivity(intent);
             }
         });

@@ -29,7 +29,7 @@ public class seatSelection extends AppCompatActivity {
     private TextView cinema_Name, Movie_name, date_Time, Seat;
     private Button back_btn, confirm_btn;
     private ArrayList<String> selectedSeat;
-    private String cinema, movie, date, time, back;
+    private String cinema, movie, date, time, back, poster;
     private DatabaseReference databaseReference;
     private int array[];
 
@@ -53,6 +53,7 @@ public class seatSelection extends AppCompatActivity {
         movie = getIntent().getStringExtra("movie");
         date = getIntent().getStringExtra("date");
         time = getIntent().getStringExtra("time");
+        poster = getIntent().getStringExtra("poster");
         back = getIntent().getStringExtra("back");
 
         cinema_Name.setText(cinema);
@@ -107,6 +108,7 @@ public class seatSelection extends AppCompatActivity {
                     ticketIntern.putExtra("movie", movie);
                     ticketIntern.putExtra("date", date);
                     ticketIntern.putExtra("time", time);
+                    ticketIntern.putExtra("poster", poster);
                     ticketIntern.putExtra("back", back);
                     startActivity(ticketIntern);
                 } else {

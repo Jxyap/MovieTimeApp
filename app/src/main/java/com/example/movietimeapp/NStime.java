@@ -38,6 +38,7 @@ public class NStime extends AppCompatActivity {
         movie = findViewById(R.id.nsMovie);
 
         String nsName = getIntent().getStringExtra("movie");
+        String poster = getIntent().getStringExtra("poster");
         nsMovieList = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Time");
@@ -50,7 +51,7 @@ public class NStime extends AppCompatActivity {
                     ModelNSTime nsModel = ds.getValue(ModelNSTime.class);
                     nsMovieList.add(nsModel);
                 }
-                AdapterNStime nsTimeAdapterNStime = new AdapterNStime(NStime.this, nsMovieList, nsName);
+                AdapterNStime nsTimeAdapterNStime = new AdapterNStime(NStime.this, nsMovieList, nsName, poster);
                 nsTimeAdapterNStime.notifyDataSetChanged();
                 nsMovie_list.setAdapter(nsTimeAdapterNStime);
             }

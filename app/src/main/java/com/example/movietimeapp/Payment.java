@@ -37,7 +37,9 @@ public class Payment extends AppCompatActivity {
     private String date;
     private String time;
     private String payment;
+    private String poster;
     private String saveseat;
+    String seatBooked;
     private FirebaseAuth mAuth;
     private EditText cardnum, et_edate, et_ccv;
 
@@ -65,6 +67,7 @@ public class Payment extends AppCompatActivity {
         time = getIntent().getStringExtra("time");
         payment = getIntent().getStringExtra("price");
         saveseat = getIntent().getStringExtra("seat");
+        poster = getIntent().getStringExtra("poster");
         details.setText(movie + " in " + cinema + " at " + time + " (" + date + ")");
         payments.setText("RM" + payment);
 
@@ -73,7 +76,7 @@ public class Payment extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String seat = snapshot.child("seat").getValue(String.class);
-                saveseat = seat +", "+saveseat;
+                seatBooked = seat +", "+saveseat;
 
                 mAuth = FirebaseAuth.getInstance();
                 confrim_bt.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +137,7 @@ public class Payment extends AppCompatActivity {
         hashMap.put("date", "" + date);
         hashMap.put("time", "" + time);
         hashMap.put("seat", "" + saveseat);
+        hashMap.put("poster", ""+poster);
         hashMap.put("ticketID", "" + timestamp);
 
 
@@ -158,7 +162,7 @@ public class Payment extends AppCompatActivity {
 
     public void saveSeatTicket() {
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("seat", saveseat);
+        hashMap.put("seat", seatBooked);
 
         String date_time = date + " " + time;
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Seat");

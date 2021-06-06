@@ -39,7 +39,11 @@
     <string name="appName">MOVIE TIME APP</string>
     <string name="welcome">WELCOME TO</string>
     <string name="logo">logo</string>
-    <string name="my_ticket">My Ticket</string>
     <string name="history">History</string>
+
+    <!--account activity-->
+    <string name="profile_image">profile_image</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_ticket">My Ticket</string>
 
 </resources>

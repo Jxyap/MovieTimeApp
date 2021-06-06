@@ -18,6 +18,13 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/et_qr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:hint="QR Value"/>
+
     <ImageView
         android:id="@+id/img_qr"
         android:layout_width="190dp"
@@ -25,5 +32,13 @@
         android:layout_marginLeft="115dp"
         android:layout_marginTop="200dp"
         android:src="@drawable/qr" />
+
+    <Button
+        android:id="@+id/btn_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="400dp"
+        android:text="Generate" />
 
 </RelativeLayout>

@@ -24,7 +24,8 @@
         android:layout_height="163dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        tools:srcCompat="@tools:sample/avatars"/>
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/profile_image" />
 
     <TextView
         android:id="@+id/name"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile"
         android:textSize="25sp"
         android:textStyle="bold"
         app:iconPadding="10dp" />
@@ -53,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
-        android:text="My Ticket"
+        android:text="@string/my_ticket"
         android:textSize="25sp"
         android:textStyle="bold"
         app:iconPadding="10dp" />
@@ -64,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="450dp"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textSize="25sp"
         android:textStyle="bold"
         app:iconPadding="10dp" />

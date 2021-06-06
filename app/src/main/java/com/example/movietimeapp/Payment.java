@@ -27,10 +27,9 @@ public class Payment extends AppCompatActivity {
 
     private Spinner type;
     private TextView details,payments;
-    private ArrayList<String> seat;
     private DatabaseReference databaseReference;
     private Button confrim_bt;
-    private String cinema, movie,date,time,payment;
+    private String cinema, movie,date,time,payment, saveseat;
     private FirebaseAuth mAuth;
     private EditText cardnum,et_edate,et_ccv;
 
@@ -42,7 +41,6 @@ public class Payment extends AppCompatActivity {
         type = findViewById(R.id.payment_cardtype);
         details = findViewById(R.id.payment_details);
         payments = findViewById(R.id.payment_price);
-        seat = new ArrayList<>();
         confrim_bt = findViewById(R.id.payment_confirm);
         cardnum= findViewById(R.id.card_num);
         et_edate=findViewById(R.id.et_edate);
@@ -54,14 +52,14 @@ public class Payment extends AppCompatActivity {
         type.setAdapter(list);
 
         if (getIntent().hasExtra("cName")){
-        cinema = getIntent().getStringExtra("cName");
-         movie = getIntent().getStringExtra("movie");
-         date = getIntent().getStringExtra("date");
-         time = getIntent().getStringExtra("time");
-        payment = getIntent().getStringExtra("price");
-        seat = (ArrayList<String>) getIntent().getSerializableExtra("seat");
-        details.setText(movie+" in "+cinema+" at "+time+" ("+date+")");
-        payments.setText("RM"+payment);
+            cinema = getIntent().getStringExtra("cName");
+            movie = getIntent().getStringExtra("movie");
+            date = getIntent().getStringExtra("date");
+            time = getIntent().getStringExtra("time");
+            payment = getIntent().getStringExtra("price");
+            saveseat = getIntent().getStringExtra("seat");
+            details.setText(movie+" in "+cinema+" at "+time+" ("+date+")");
+            payments.setText("RM"+payment);
 
         }
         mAuth = FirebaseAuth.getInstance();
@@ -69,12 +67,12 @@ public class Payment extends AppCompatActivity {
         confrim_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cardnum.getText().toString().length()!=0 && et_edate.getText().toString().length()!=0 && et_ccv.getText().toString().length()!=0 ){
+             //   if (cardnum.getText().toString().length()!=0 && et_edate.getText().toString().length()!=0 && et_ccv.getText().toString().length()!=0 ){
                     saveSeatTicket();
                     saveTicketfunction();
-                }
-                else
-                    Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                    Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,10 +80,7 @@ public class Payment extends AppCompatActivity {
 
     public void saveTicketfunction(){
         final String timestamp = ""+System.currentTimeMillis();
-        String saveseat="";
-        for (int i=0; i<seat.size();i++) {
-            saveseat = saveseat+seat.get(i)+",";
-        }
+
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("cinemaName", "" + cinema);
         hashMap.put("movie", "" + movie);
@@ -116,9 +111,8 @@ public class Payment extends AppCompatActivity {
 
     public void saveSeatTicket(){
         HashMap<String, Object> hashMap = new HashMap<>();
-        for (int i=0; i<seat.size();i++) {
-           hashMap.put(seat.get(i),"true");
-        }
+        hashMap.put("seat",saveseat);
+
 
 
         String date_time = date+" "+time;

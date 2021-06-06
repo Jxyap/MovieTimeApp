@@ -1,5 +1,6 @@
 package com.example.movietimeapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -39,6 +41,7 @@ public class Homepage extends AppCompatActivity {
     private float maxValue;
     private SensorEventListener lightSensorListener;
     private RelativeLayout screen;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Homepage.this, NowShowing.class));
+
             }
         });
 
@@ -128,6 +132,25 @@ public class Homepage extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(lightSensorListener);
+    }
+
+    @Override
+    public void onBackPressed(){
+        builder = new AlertDialog.Builder(this);
+        builder.setMessage("Do you sure to quit ?")
+                .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Homepage.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
 
     private void loadSlide(){

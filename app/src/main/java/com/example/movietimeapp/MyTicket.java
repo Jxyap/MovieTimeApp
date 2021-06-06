@@ -12,36 +12,34 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MyTicket extends AppCompatActivity {
-    public class CustomAdapter extends ArrayAdapter {
+public class MyTicket extends ArrayAdapter {
 
-        final Context context;
-        private final String movie[];
-        final Integer logo[];
+    final Context context;
+    private final String movie[];
+    final Integer logo[];
 
-        public CustomAdapter(@NonNull Context context, String uni[], Integer logo[]) {
-            super(context, R.layout.activity_my_ticket, uni);
+    public MyTicket(@NonNull Context context, String movie[], Integer logo[]) {
+        super(context, R.layout.activity_my_ticket, movie);
 
-            this.context = context;
-            this.movie = uni;
-            this.logo = logo;
-        }
+        this.context = context;
+        this.movie = movie;
+        this.logo = logo;
+    }
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView = inflater.inflate(R.layout.activity_my_ticket, null, true);
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = inflater.inflate(R.layout.activity_my_ticket, null, true);
 
-            TextView title = rowView.findViewById(R.id.txt_movie);
+        TextView title = rowView.findViewById(R.id.txt_movie);
 
-            ImageView image = rowView.findViewById(R.id.img_movie);
+        ImageView image = rowView.findViewById(R.id.img_movie);
 
-            title.setText(movie[position]);
-            image.setImageResource(logo[position]);
+        title.setText(movie[position]);
+        image.setImageResource(logo[position]);
 
-            return rowView;
-        }
+        return rowView;
     }
 }

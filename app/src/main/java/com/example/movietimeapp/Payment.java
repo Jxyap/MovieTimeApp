@@ -70,12 +70,12 @@ public class Payment extends AppCompatActivity {
         confrim_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   if (cardnum.getText().toString().length()!=0 && et_edate.getText().toString().length()!=0 && et_ccv.getText().toString().length()!=0 ){
+               if (cardnum.getText().toString().length()!=0 && et_edate.getText().toString().length()!=0 && et_ccv.getText().toString().length()!=0 ){
                     saveSeatTicket();
                     saveTicketfunction();
-//                }
-//                else
-//                    Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(Payment.this, "Please insert all your information", Toast.LENGTH_SHORT).show();
             }
         });
 

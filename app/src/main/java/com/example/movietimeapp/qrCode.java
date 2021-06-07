@@ -6,7 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -16,7 +21,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -31,13 +38,18 @@ import androidmads.library.qrgenearator.QRGEncoder;
 public class qrCode extends AppCompatActivity {
 
     FirebaseAuth mAuth;
-    EditText qrvalue;
     Button generateBtn;
     ImageView qrImage;
     String cinema, movie, date, time, seat, ticketID, poster;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
     AlertDialog.Builder builder;
+    private TextView alert, instruction;
+    private SensorManager sensorManager;
+    private Sensor lightSensor;
+    private float maxValue, minValue;
+    private SensorEventListener lightSensorListener;
+    private RelativeLayout screen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,34 @@ public class qrCode extends AppCompatActivity {
 
         qrImage = findViewById(R.id.img_qr);
         generateBtn = findViewById(R.id.btn_qr);
+        alert =findViewById(R.id.AlertMessage);
+        instruction = findViewById(R.id.instruction);
+
+        screen = findViewById(R.id.qrScreen);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        if (lightSensor == null) {
+            Toast.makeText(this, "The device has no light sensor !", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        // max value for light sensor
+        maxValue = lightSensor.getMaximumRange();
+
+        lightSensorListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                float value = event.values[0];
+                int newValue = (int) (255f * value / maxValue);
+                screen.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
 
         cinema = getIntent().getStringExtra("cinemaName");
         movie = getIntent().getStringExtra("movie");
@@ -54,7 +94,6 @@ public class qrCode extends AppCompatActivity {
         seat = getIntent().getStringExtra("seat");
         ticketID = getIntent().getStringExtra("ticketID");
         poster = getIntent().getStringExtra("poster");
-
 
         String data = cinema + "; " + movie +"; "+date+"; "+time+"; "+ seat;
 
@@ -120,5 +159,17 @@ public class qrCode extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(lightSensorListener, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(lightSensorListener);
     }
 }

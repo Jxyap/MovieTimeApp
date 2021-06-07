@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieTimeApp</string>
+    <string name="app_name">Movie Time App</string>
 
     <!--navigation bar-->
     <string name="title_home">HOME</string>

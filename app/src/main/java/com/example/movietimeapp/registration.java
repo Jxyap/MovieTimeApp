@@ -207,7 +207,7 @@ public class registration extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 progressDialog.dismiss();
-                                Intent intentToMain = new Intent(registration.this,MainActivity.class);
+                                Intent intentToMain = new Intent(registration.this, Login.class);
                                 startActivity(intentToMain);
                                 finish();
                             }
@@ -215,7 +215,7 @@ public class registration extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog.dismiss();
-                                Intent intentToMain = new Intent(registration.this,MainActivity.class);
+                                Intent intentToMain = new Intent(registration.this, Login.class);
                                 startActivity(intentToMain);
                                 finish();
                             }
